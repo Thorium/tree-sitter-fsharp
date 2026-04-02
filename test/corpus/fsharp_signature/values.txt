@@ -147,7 +147,7 @@ type Color = Red | Green | Blue
     name: (long_identifier
       (identifier))
     (type_definition
-      (union_type_defn
+      (type_defn
         (type_name
           type_name: (identifier))
         block: (union_type_cases
@@ -226,7 +226,7 @@ type Point = { X: float; Y: float }
     name: (long_identifier
       (identifier))
     (type_definition
-      (record_type_defn
+      (type_defn
         (type_name
           type_name: (identifier))
         block: (record_fields

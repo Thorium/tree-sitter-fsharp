@@ -8,7 +8,7 @@ type Test = Red = 1
 
 (file
   (type_definition
-    (enum_type_defn
+    (type_defn
       (type_name
         (identifier))
       (enum_type_cases
@@ -29,7 +29,7 @@ type Test =
 
 (file
   (type_definition
-    (enum_type_defn
+    (type_defn
       (type_name
         (identifier))
       (enum_type_cases
@@ -52,7 +52,7 @@ type Test = Red
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases
@@ -71,7 +71,7 @@ type Test =
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases
@@ -433,7 +433,7 @@ end
 
 (file
   (type_definition
-    (interface_type_defn
+    (type_defn
       (type_name
         (identifier))
       (member_defn
@@ -462,7 +462,7 @@ type A =
 
 (file
   (type_definition
-    (interface_type_defn
+    (type_defn
       (type_name
         (identifier))
       (member_defn
@@ -490,7 +490,7 @@ type A =
 
 (file
   (type_definition
-    (interface_type_defn
+    (type_defn
       (type_name
         (identifier)))))
 
@@ -505,7 +505,7 @@ type A =
 
 (file
   (type_definition
-    (interface_type_defn
+    (type_defn
       (type_name
         (identifier)))))
 
@@ -519,7 +519,7 @@ type A = interface end
 
 (file
   (type_definition
-    (interface_type_defn
+    (type_defn
       (type_name
         (identifier)))))
 
@@ -852,13 +852,13 @@ and B = C
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases
         (union_type_case
           (identifier))))
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases
@@ -876,7 +876,7 @@ and 'T maybe = Maybe<'T>
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (long_identifier
           (identifier))
@@ -893,7 +893,7 @@ and 'T maybe = Maybe<'T>
                 (identifier)))))
         (union_type_case
           (identifier))))
-    (type_abbrev_defn
+    (type_defn
       (type_name
         (type_argument
           (identifier))
@@ -918,7 +918,7 @@ type T =
 
 (file
   (type_definition
-    (record_type_defn
+    (type_defn
       (type_name
         (identifier))
       (record_fields
@@ -945,7 +945,7 @@ type T =
 
 (file
   (type_definition
-    (type_abbrev_defn
+    (type_defn
       (type_name
         (identifier))
       (anon_record_type
@@ -975,7 +975,7 @@ type T =
 
 (file
   (type_definition
-    (record_type_defn
+    (type_defn
       (type_name
         (identifier))
       (record_fields
@@ -1021,7 +1021,7 @@ type T =
 
 (file
   (type_definition
-    (record_type_defn
+    (type_defn
       (type_name
         (identifier))
       (record_fields
@@ -1069,7 +1069,7 @@ type T =
 
 (file
   (type_definition
-    (record_type_defn
+    (type_defn
       (type_name
         (identifier))
       (record_fields
@@ -1465,7 +1465,7 @@ type A = {
 (file
   (xml_doc)
   (type_definition
-    (record_type_defn
+    (type_defn
       (type_name
         (identifier))
       (xml_doc)
@@ -1500,7 +1500,7 @@ type A = {
     (long_identifier
       (identifier))
     (type_definition
-      (record_type_defn
+      (type_defn
         (type_name
           (identifier))
         (record_fields
@@ -1549,7 +1549,7 @@ type A = {
 
 (file
   (type_definition
-    (record_type_defn
+    (type_defn
       (type_name
         (identifier))
       (record_fields
@@ -1606,7 +1606,7 @@ derived measure type definition
         (simple_type
           (long_identifier
             (identifier)))))
-    (type_abbrev_defn
+    (type_defn
       (type_name
         (identifier))
       (measure
@@ -1756,7 +1756,7 @@ type sql = SqlProvider<ConnectionString = "secret">
 
 (file
   (type_definition
-    (type_abbrev_defn
+    (type_defn
       (type_name
         (identifier))
       (generic_type
@@ -1784,7 +1784,7 @@ type sql = SqlProvider<
 
 (file
   (type_definition
-    (type_abbrev_defn
+    (type_defn
       (type_name
         (identifier))
       (generic_type
@@ -1812,7 +1812,7 @@ type F = List<int> -> string
 
 (file
   (type_definition
-    (type_abbrev_defn
+    (type_defn
       (type_name
         type_name: (identifier))
       block: (function_type
@@ -1838,7 +1838,7 @@ type R = { A: bool; B: bool; }
 
 (file
   (type_definition
-    (record_type_defn
+    (type_defn
       (type_name
         (identifier))
       (record_fields
@@ -1967,7 +1967,7 @@ type T = private {
 
 (file
   (type_definition
-    (record_type_defn
+    (type_defn
       (type_name
         (identifier))
       (access_modifier)
@@ -1996,7 +1996,7 @@ type T =
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (access_modifier)
@@ -2016,7 +2016,7 @@ type T = private S of string
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (access_modifier)
@@ -2047,7 +2047,7 @@ let str1 = "a" + "b"
     (long_identifier
       (identifier))
     (type_definition
-      (union_type_defn
+      (type_defn
         (type_name
           (identifier))
         (union_type_cases
@@ -2104,7 +2104,7 @@ type U =
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases
@@ -2576,7 +2576,7 @@ type A = A
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases
@@ -2680,7 +2680,7 @@ type T =
 
 (file
   (type_definition
-    (record_type_defn
+    (type_defn
       (type_name
         (identifier))
       (record_fields
@@ -2748,7 +2748,7 @@ type T = U
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases
@@ -2767,7 +2767,7 @@ type T = U
                 (long_identifier
                   (identifier)))))))))
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases

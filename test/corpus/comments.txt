@@ -337,14 +337,14 @@ and U = unit
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases
         (union_type_case
           (identifier)))
       (line_comment))
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases

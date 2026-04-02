@@ -342,31 +342,11 @@
         "named": true
       },
       {
-        "type": "delegate_type_defn",
-        "named": true
-      },
-      {
-        "type": "enum_type_defn",
-        "named": true
-      },
-      {
-        "type": "interface_type_defn",
-        "named": true
-      },
-      {
-        "type": "record_type_defn",
-        "named": true
-      },
-      {
-        "type": "type_abbrev_defn",
+        "type": "type_defn",
         "named": true
       },
       {
         "type": "type_extension",
-        "named": true
-      },
-      {
-        "type": "union_type_defn",
         "named": true
       }
     ]
@@ -1255,32 +1235,6 @@
     }
   },
   {
-    "type": "delegate_type_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "delegate_signature",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "disjunct_pattern",
     "named": true,
     "fields": {},
@@ -1406,36 +1360,6 @@
       "types": [
         {
           "type": "enum_type_case",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "enum_type_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "enum_type_cases",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "enum_type_cases",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         }
       ]
@@ -2145,40 +2069,6 @@
       "types": [
         {
           "type": "_type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "interface_type_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "interface_implementation",
-            "named": true
-          },
-          {
-            "type": "member_defn",
-            "named": true
-          },
-          {
-            "type": "preproc_if",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type_name",
           "named": true
         }
       ]
@@ -3373,48 +3263,6 @@
     }
   },
   {
-    "type": "record_type_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "access_modifier",
-            "named": true
-          },
-          {
-            "type": "record_fields",
-            "named": true
-          },
-          {
-            "type": "type_extension_elements",
-            "named": true
-          },
-          {
-            "type": "{",
-            "named": false
-          },
-          {
-            "type": "}",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "repeat_pattern",
     "named": true,
     "fields": {},
@@ -3771,36 +3619,6 @@
     }
   },
   {
-    "type": "type_abbrev_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "_type",
-            "named": true
-          },
-          {
-            "type": "measure",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "type_argument",
     "named": true,
     "fields": {},
@@ -3939,6 +3757,96 @@
         },
         {
           "type": "attributes",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_defn",
+    "named": true,
+    "fields": {
+      "block": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "_type",
+            "named": true
+          },
+          {
+            "type": "access_modifier",
+            "named": true
+          },
+          {
+            "type": "delegate_signature",
+            "named": true
+          },
+          {
+            "type": "enum_type_cases",
+            "named": true
+          },
+          {
+            "type": "interface_implementation",
+            "named": true
+          },
+          {
+            "type": "measure",
+            "named": true
+          },
+          {
+            "type": "member_defn",
+            "named": true
+          },
+          {
+            "type": "preproc_if",
+            "named": true
+          },
+          {
+            "type": "record_fields",
+            "named": true
+          },
+          {
+            "type": "type_extension_elements",
+            "named": true
+          },
+          {
+            "type": "union_type_cases",
+            "named": true
+          },
+          {
+            "type": "{",
+            "named": false
+          },
+          {
+            "type": "}",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "access_modifier",
+          "named": true
+        },
+        {
+          "type": "enum_type_cases",
+          "named": true
+        },
+        {
+          "type": "type_extension_elements",
+          "named": true
+        },
+        {
+          "type": "type_name",
+          "named": true
+        },
+        {
+          "type": "union_type_cases",
           "named": true
         }
       ]
@@ -4294,52 +4202,6 @@
       "types": [
         {
           "type": "union_type_case",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "union_type_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "access_modifier",
-            "named": true
-          },
-          {
-            "type": "type_extension_elements",
-            "named": true
-          },
-          {
-            "type": "union_type_cases",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "access_modifier",
-          "named": true
-        },
-        {
-          "type": "type_extension_elements",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "union_type_cases",
           "named": true
         }
       ]

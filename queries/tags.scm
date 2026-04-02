@@ -9,25 +9,10 @@
 
 (type_definition
   [
-    (delegate_type_defn
-      (type_name
-        type_name: (_) @name))
-    (record_type_defn
-      (type_name
-        type_name: (_) @name))
-    (union_type_defn
-      (type_name
-        type_name: (_) @name))
-    (interface_type_defn
+    (type_defn
       (type_name
         type_name: (_) @name))
     (anon_type_defn
-      (type_name
-        type_name: (_) @name))
-    (enum_type_defn
-      (type_name
-        type_name: (_) @name))
-    (type_abbrev_defn
       (type_name
         type_name: (_) @name))
     (type_extension

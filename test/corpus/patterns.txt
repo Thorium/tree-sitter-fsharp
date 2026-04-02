@@ -457,7 +457,7 @@ type T =
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases
@@ -506,7 +506,7 @@ type T =
 
 (file
   (type_definition
-    (union_type_defn
+    (type_defn
       (type_name
         (identifier))
       (union_type_cases

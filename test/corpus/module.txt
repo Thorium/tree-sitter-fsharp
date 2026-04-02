@@ -307,7 +307,7 @@ module A =
       (const
         (string)))
     (type_definition
-      (union_type_defn
+      (type_defn
         (type_name
           (identifier))
         (union_type_cases
@@ -339,7 +339,7 @@ module A =
       (const
         (string)))
     (type_definition
-      (union_type_defn
+      (type_defn
         (type_name
           (identifier))
         (union_type_cases

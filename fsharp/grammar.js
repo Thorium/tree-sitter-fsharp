@@ -1369,13 +1369,8 @@ module.exports = grammar({
 
     _type_defn_body: ($) =>
       choice(
-        $.delegate_type_defn,
-        $.record_type_defn,
-        $.union_type_defn,
-        $.interface_type_defn,
+        $.type_defn,
         $.anon_type_defn,
-        $.enum_type_defn,
-        $.type_abbrev_defn,
         $.type_extension,
       ),
 
@@ -1397,15 +1392,21 @@ module.exports = grammar({
 
     type_extension: ($) => seq($.type_name, $.type_extension_elements),
 
-    delegate_type_defn: ($) =>
-      seq($.type_name, "=", scoped($.delegate_signature, $._indent, $._dedent)),
+    // Merged type definition: covers delegate, type abbreviation, record, union, enum, interface...end
+    type_defn: ($) =>
+      prec.left(
+        seq(
+          $.type_name,
+          "=",
+          $._type_defn_content,
+        ),
+      ),
 
-    delegate_signature: ($) => seq("delegate", "of", $._type),
-
-    type_abbrev_defn: ($) =>
-      seq(
-        $.type_name,
-        "=",
+    _type_defn_content: ($) =>
+      prec.left(choice(
+        // delegate
+        scoped($.delegate_signature, $._indent, $._dedent),
+        // type abbreviation
         field(
           "block",
           seq(
@@ -1419,7 +1420,47 @@ module.exports = grammar({
             $._dedent,
           ),
         ),
+        // record
+        scoped($._record_type_defn_inner, $._indent, $._dedent),
+        // union (scoped or bare)
+        scoped($._union_type_defn_inner, $._indent, $._dedent),
+        $._union_type_defn_inner,
+        // enum (scoped or bare)
+        scoped($.enum_type_cases, $._indent, $._dedent),
+        $.enum_type_cases,
+        // interface ... end
+        prec(1, seq(
+          alias($._interface_begin, "interface"),
+          scoped(repeat($._type_defn_elements), $._indent, $._dedent),
+          "end",
+        )),
+      )),
+
+    // Class/struct/begin...end type definitions (kept separate to avoid scanner conflicts with interface keyword)
+    anon_type_defn: ($) =>
+      prec.left(
+        seq(
+          $.type_name,
+          optional($.primary_constr_args),
+          "=",
+          choice(
+            alias($.inline_line_comment, $.line_comment),
+            scoped($._class_type_body, $._indent, $._dedent),
+            seq(
+              choice("begin", "class"),
+              scoped(optional(seq(optional($._newline), optional($._class_type_body))), $._indent, $._dedent),
+              "end",
+            ),
+            seq(
+              alias($._struct_begin, "struct"),
+              scoped(repeat($._type_defn_elements), $._indent, $._dedent),
+              "end",
+            ),
+          ),
+        ),
       ),
+
+    delegate_signature: ($) => seq("delegate", "of", $._type),
 
     _class_type_body_inner: ($) =>
       choice($.class_inherits_decl, $.type_extension_elements),
@@ -1439,15 +1480,6 @@ module.exports = grammar({
         optional($.type_extension_elements),
       ),
 
-    record_type_defn: ($) =>
-      prec.left(
-        seq(
-          $.type_name,
-          "=",
-          scoped($._record_type_defn_inner, $._indent, $._dedent),
-        ),
-      ),
-
     record_fields: ($) =>
       seq(
         $.record_field,
@@ -1465,16 +1497,6 @@ module.exports = grammar({
         $._type,
       ),
 
-    enum_type_defn: ($) =>
-      seq(
-        $.type_name,
-        "=",
-        choice(
-          scoped($.enum_type_cases, $._indent, $._dedent),
-          $.enum_type_cases,
-        ),
-      ),
-
     enum_type_cases: ($) =>
       seq(optional("|"), $.enum_type_case, repeat(seq("|", $.enum_type_case))),
 
@@ -1485,18 +1507,6 @@ module.exports = grammar({
         optional($.access_modifier),
         $.union_type_cases,
         optional($.type_extension_elements),
-      ),
-
-    union_type_defn: ($) =>
-      prec.left(
-        seq(
-          $.type_name,
-          "=",
-          choice(
-            scoped($._union_type_defn_inner, $._indent, $._dedent),
-            $._union_type_defn_inner,
-          ),
-        ),
       ),
 
     union_type_cases: ($) =>
@@ -1521,43 +1531,6 @@ module.exports = grammar({
 
     union_type_field: ($) =>
       prec.left(choice($._type, seq($.identifier, ":", $._type))),
-
-    interface_type_defn: ($) =>
-      prec.left(
-        1,
-        seq(
-          $.type_name,
-          "=",
-          seq(
-            alias($._interface_begin, "interface"),
-            scoped(repeat($._type_defn_elements), $._indent, $._dedent),
-            "end",
-          ),
-        ),
-      ),
-
-    anon_type_defn: ($) =>
-      prec.left(
-        seq(
-          $.type_name,
-          optional($.primary_constr_args),
-          "=",
-          choice(
-            alias($.inline_line_comment, $.line_comment),
-            scoped($._class_type_body, $._indent, $._dedent),
-            seq(
-              choice("begin", "class"),
-              scoped(optional(seq(optional($._newline), optional($._class_type_body))), $._indent, $._dedent),
-              "end",
-            ),
-            seq(
-              alias($._struct_begin, "struct"),
-              scoped(repeat($._type_defn_elements), $._indent, $._dedent),
-              "end",
-            ),
-          ),
-        ),
-      ),
 
     _class_function_or_value_defn: ($) =>
       seq(

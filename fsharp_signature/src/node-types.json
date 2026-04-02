@@ -1663,32 +1663,6 @@
     }
   },
   {
-    "type": "delegate_type_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "delegate_signature",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "disjunct_pattern",
     "named": true,
     "fields": {},
@@ -1823,36 +1797,6 @@
       "types": [
         {
           "type": "enum_type_case",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "enum_type_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "enum_type_cases",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "enum_type_cases",
-          "named": true
-        },
-        {
-          "type": "type_name",
           "named": true
         }
       ]
@@ -2809,40 +2753,6 @@
     }
   },
   {
-    "type": "interface_type_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "interface_implementation",
-            "named": true
-          },
-          {
-            "type": "member_defn",
-            "named": true
-          },
-          {
-            "type": "preproc_if",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "list_pattern",
     "named": true,
     "fields": {
@@ -3744,30 +3654,6 @@
         },
         {
           "type": "attributes",
-          "named": true
-        },
-        {
-          "type": "const",
-          "named": true
-        },
-        {
-          "type": "declaration_expression",
-          "named": true
-        },
-        {
-          "type": "extern_binding",
-          "named": true
-        },
-        {
-          "type": "fsi_directive_decl",
-          "named": true
-        },
-        {
-          "type": "long_identifier_or_op",
-          "named": true
-        },
-        {
-          "type": "paren_expression",
           "named": true
         }
       ]
@@ -4792,48 +4678,6 @@
     }
   },
   {
-    "type": "record_type_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "access_modifier",
-            "named": true
-          },
-          {
-            "type": "record_fields",
-            "named": true
-          },
-          {
-            "type": "type_extension_elements",
-            "named": true
-          },
-          {
-            "type": "{",
-            "named": false
-          },
-          {
-            "type": "}",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "repeat_pattern",
     "named": true,
     "fields": {},
@@ -5188,84 +5032,6 @@
     }
   },
   {
-    "type": "type_abbrev_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "anon_record_type",
-            "named": true
-          },
-          {
-            "type": "compound_type",
-            "named": true
-          },
-          {
-            "type": "constrained_type",
-            "named": true
-          },
-          {
-            "type": "flexible_type",
-            "named": true
-          },
-          {
-            "type": "function_type",
-            "named": true
-          },
-          {
-            "type": "generic_type",
-            "named": true
-          },
-          {
-            "type": "list_type",
-            "named": true
-          },
-          {
-            "type": "measure",
-            "named": true
-          },
-          {
-            "type": "paren_type",
-            "named": true
-          },
-          {
-            "type": "postfix_type",
-            "named": true
-          },
-          {
-            "type": "simple_type",
-            "named": true
-          },
-          {
-            "type": "static_type",
-            "named": true
-          },
-          {
-            "type": "struct_type",
-            "named": true
-          },
-          {
-            "type": "type_argument",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "type_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "type_argument",
     "named": true,
     "fields": {},
@@ -5459,31 +5225,149 @@
           "named": true
         },
         {
-          "type": "delegate_type_defn",
-          "named": true
-        },
-        {
-          "type": "enum_type_defn",
-          "named": true
-        },
-        {
-          "type": "interface_type_defn",
-          "named": true
-        },
-        {
-          "type": "record_type_defn",
-          "named": true
-        },
-        {
-          "type": "type_abbrev_defn",
+          "type": "type_defn",
           "named": true
         },
         {
           "type": "type_extension",
           "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_defn",
+    "named": true,
+    "fields": {
+      "block": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "access_modifier",
+            "named": true
+          },
+          {
+            "type": "anon_record_type",
+            "named": true
+          },
+          {
+            "type": "compound_type",
+            "named": true
+          },
+          {
+            "type": "constrained_type",
+            "named": true
+          },
+          {
+            "type": "delegate_signature",
+            "named": true
+          },
+          {
+            "type": "enum_type_cases",
+            "named": true
+          },
+          {
+            "type": "flexible_type",
+            "named": true
+          },
+          {
+            "type": "function_type",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "interface_implementation",
+            "named": true
+          },
+          {
+            "type": "list_type",
+            "named": true
+          },
+          {
+            "type": "measure",
+            "named": true
+          },
+          {
+            "type": "member_defn",
+            "named": true
+          },
+          {
+            "type": "paren_type",
+            "named": true
+          },
+          {
+            "type": "postfix_type",
+            "named": true
+          },
+          {
+            "type": "preproc_if",
+            "named": true
+          },
+          {
+            "type": "record_fields",
+            "named": true
+          },
+          {
+            "type": "simple_type",
+            "named": true
+          },
+          {
+            "type": "static_type",
+            "named": true
+          },
+          {
+            "type": "struct_type",
+            "named": true
+          },
+          {
+            "type": "type_argument",
+            "named": true
+          },
+          {
+            "type": "type_extension_elements",
+            "named": true
+          },
+          {
+            "type": "union_type_cases",
+            "named": true
+          },
+          {
+            "type": "{",
+            "named": false
+          },
+          {
+            "type": "}",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "access_modifier",
+          "named": true
         },
         {
-          "type": "union_type_defn",
+          "type": "enum_type_cases",
+          "named": true
+        },
+        {
+          "type": "type_extension_elements",
+          "named": true
+        },
+        {
+          "type": "type_name",
+          "named": true
+        },
+        {
+          "type": "union_type_cases",
           "named": true
         }
       ]
@@ -6037,52 +5921,6 @@
       "types": [
         {
           "type": "union_type_case",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "union_type_defn",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "access_modifier",
-            "named": true
-          },
-          {
-            "type": "type_extension_elements",
-            "named": true
-          },
-          {
-            "type": "union_type_cases",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "access_modifier",
-          "named": true
-        },
-        {
-          "type": "type_extension_elements",
-          "named": true
-        },
-        {
-          "type": "type_name",
-          "named": true
-        },
-        {
-          "type": "union_type_cases",
           "named": true
         }
       ]
