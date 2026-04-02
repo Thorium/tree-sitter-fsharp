@@ -352,8 +352,7 @@ module.exports = grammar({
         $.cons_pattern,
         $.repeat_pattern,
         $.paren_pattern,
-        $.list_pattern,
-        $.array_pattern,
+        $.collection_pattern,
         $.record_pattern,
         $.typed_pattern,
         $.attribute_pattern,
@@ -417,9 +416,8 @@ module.exports = grammar({
         $.typed_const_pattern,
         $.const,
         $.long_identifier,
-        $.list_pattern,
+        $.collection_pattern,
         $.record_pattern,
-        $.array_pattern,
         seq("(", $._pattern, ")"),
         $.type_check_pattern,
       ),
@@ -435,8 +433,11 @@ module.exports = grammar({
         $._dedent,
       ),
 
-    list_pattern: ($) => seq("[", optional($._list_pattern_content), "]"),
-    array_pattern: ($) => seq("[|", optional($._list_pattern_content), "|]"),
+    collection_pattern: ($) =>
+      choice(
+        seq("[", optional($._list_pattern_content), "]"),
+        seq("[|", optional($._list_pattern_content), "|]"),
+      ),
     record_pattern: ($) =>
       prec.left(
         seq(
@@ -501,8 +502,7 @@ module.exports = grammar({
         $.infix_expression,
         $.index_expression,
         $.mutate_expression,
-        $.list_expression,
-        $.array_expression,
+        $.collection_expression,
         $.ce_expression,
         $.prefixed_expression,
         $.brace_expression,
@@ -514,8 +514,7 @@ module.exports = grammar({
         $.function_expression,
         $.sequential_expression,
         $.if_expression,
-        $.while_expression,
-        $.for_expression,
+        $.loop_expression,
         $.match_expression,
         $.try_expression,
         $.literal_expression,
@@ -643,33 +642,26 @@ module.exports = grammar({
         seq($._expression, choice(":", ":>", ":?", ":?>"), $._type),
       ),
 
-    for_expression: ($) =>
+    loop_expression: ($) =>
       prec(
         PREC.DO_EXPR + 1,
         seq(
-          "for",
           choice(
-            seq($._pattern, "in", $._expression_or_range),
             seq(
-              $.identifier,
-              "=",
-              $._expression,
-              choice("to", "downto"),
-              $._expression,
+              "for",
+              choice(
+                seq($._pattern, "in", $._expression_or_range),
+                seq(
+                  $.identifier,
+                  "=",
+                  $._expression,
+                  choice("to", "downto"),
+                  $._expression,
+                ),
+              ),
             ),
+            seq(choice("while", "while!"), $._expression),
           ),
-          "do",
-          $._expression_block,
-          optional("done"),
-        ),
-      ),
-
-    while_expression: ($) =>
-      prec(
-        PREC.DO_EXPR + 1,
-        seq(
-          choice("while", "while!"),
-          $._expression,
           "do",
           $._expression_block,
           optional("done"),
@@ -798,9 +790,11 @@ module.exports = grammar({
         $._dedent,
       ),
 
-    list_expression: ($) => seq("[", optional($._list_element), "]"),
-
-    array_expression: ($) => seq("[|", optional($._list_element), "|]"),
+    collection_expression: ($) =>
+      choice(
+        seq("[", optional($._list_element), "]"),
+        seq("[|", optional($._list_element), "|]"),
+      ),
 
     range_expression: ($) =>
       prec(
@@ -1828,15 +1822,19 @@ module.exports = grammar({
 
     _string_literal: ($) => seq('"', repeat($._string_char), '"'),
 
-    string: ($) => choice($._string_literal, $.format_string),
+    string: ($) => choice(
+      $._string_literal,
+      $.format_string,
+      seq('"', repeat($._string_char), token.immediate('"B')),
+    ),
 
     _verbatim_string_char: ($) =>
       choice($._simple_string_char, $._non_escape_char, "\\", /\"\"/),
     verbatim_string: ($) =>
-      seq('@"', repeat($._verbatim_string_char), token.immediate('"')),
-    bytearray: ($) => seq('"', repeat($._string_char), token.immediate('"B')),
-    verbatim_bytearray: ($) =>
-      seq('@"', repeat($._verbatim_string_char), token.immediate('"B')),
+      choice(
+        seq('@"', repeat($._verbatim_string_char), token.immediate('"')),
+        seq('@"', repeat($._verbatim_string_char), token.immediate('"B')),
+      ),
 
     format_triple_quoted_string: ($) =>
       choice(
@@ -1866,29 +1864,26 @@ module.exports = grammar({
 
     const: ($) =>
       choice(
-        $.sbyte,
-        $.int16,
-        $.int32,
-        $.int64,
-        $.byte,
-        $.uint16,
-        $.uint32,
-        $.int,
-        $.xint,
-        $.nativeint,
-        $.unativeint,
+        seq(
+          choice($.int, $.xint),
+          optional(
+            token.immediate(
+              choice(
+                // int suffixes (sbyte, byte, int16, uint16, int32, uint32, nativeint, unativeint, int64, uint64, bignum)
+                "y", "uy", "s", "us", "l", "ul", "u", "n", "un", "L", "UL", "uL",
+                /[QRZING]/,
+              ),
+            ),
+          ),
+        ),
         $.decimal,
         $.float,
-        $.uint64,
         $.ieee32,
         $.ieee64,
-        $.bignum,
         $.char,
         $.string,
         $.verbatim_string,
         $.triple_quoted_string,
-        $.bytearray,
-        $.verbatim_bytearray,
         $.bool,
         $.unit,
       ),
@@ -1965,18 +1960,8 @@ module.exports = grammar({
         choice(/0[xX]([0-9a-fA-F]_?)+/, /0[oO]([0-7]_?)+/, /0[bB]([0-1]_?)+/),
       ),
 
-    sbyte: ($) => seq(choice($.int, $.xint), token.immediate("y")),
-    byte: ($) => seq(choice($.int, $.xint), token.immediate("uy")),
-    int16: ($) => seq(choice($.int, $.xint), token.immediate("s")),
-    uint16: ($) => seq(choice($.int, $.xint), token.immediate("us")),
-    int32: ($) => seq(choice($.int, $.xint), token.immediate("l")),
-    uint32: ($) =>
-      seq(choice($.int, $.xint), token.immediate(choice("ul", "u"))),
-    nativeint: ($) => seq(choice($.int, $.xint), token.immediate("n")),
-    unativeint: ($) => seq(choice($.int, $.xint), token.immediate("un")),
-    int64: ($) => seq(choice($.int, $.xint), token.immediate("L")),
-    uint64: ($) =>
-      seq(choice($.int, $.xint), token.immediate(choice("UL", "uL"))),
+    // Integer suffix types (sbyte, byte, int16, uint16, int32, uint32, nativeint, unativeint, int64, uint64)
+    // have been merged into the const rule above with optional token.immediate suffixes.
 
     ieee32: ($) =>
       choice(
@@ -1985,7 +1970,7 @@ module.exports = grammar({
       ),
     ieee64: ($) => seq($.xint, token.immediate("LF")),
 
-    bignum: ($) => seq($.int, token.immediate(/[QRZING]/)),
+    // bignum suffixes [QRZING] are now handled inline in const rule.
     decimal: ($) => seq(choice($.float, $.int), token.immediate(/[Mm]/)),
 
     float: ($) =>

@@ -74,15 +74,15 @@
           "named": true
         },
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -103,10 +103,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -247,15 +243,15 @@
       "required": false,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -276,10 +272,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -412,94 +404,6 @@
     }
   },
   {
-    "type": "array_pattern",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "array_pattern",
-            "named": true
-          },
-          {
-            "type": "as_pattern",
-            "named": true
-          },
-          {
-            "type": "attribute_pattern",
-            "named": true
-          },
-          {
-            "type": "conjunct_pattern",
-            "named": true
-          },
-          {
-            "type": "cons_pattern",
-            "named": true
-          },
-          {
-            "type": "const",
-            "named": true
-          },
-          {
-            "type": "disjunct_pattern",
-            "named": true
-          },
-          {
-            "type": "identifier_pattern",
-            "named": true
-          },
-          {
-            "type": "list_pattern",
-            "named": true
-          },
-          {
-            "type": "named_field_pattern",
-            "named": true
-          },
-          {
-            "type": "null",
-            "named": false
-          },
-          {
-            "type": "optional_pattern",
-            "named": true
-          },
-          {
-            "type": "paren_pattern",
-            "named": true
-          },
-          {
-            "type": "record_pattern",
-            "named": true
-          },
-          {
-            "type": "repeat_pattern",
-            "named": true
-          },
-          {
-            "type": "type_check_pattern",
-            "named": true
-          },
-          {
-            "type": "typed_const_pattern",
-            "named": true
-          },
-          {
-            "type": "typed_pattern",
-            "named": true
-          },
-          {
-            "type": "wildcard_pattern",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "as_pattern",
     "named": true,
     "fields": {},
@@ -508,15 +412,15 @@
       "required": true,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -541,10 +445,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -752,10 +652,6 @@
       "required": true,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
@@ -765,6 +661,10 @@
         },
         {
           "type": "attributes",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -785,10 +685,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -846,21 +742,6 @@
     }
   },
   {
-    "type": "bignum",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "block_comment",
     "named": true,
     "extra": true,
@@ -875,30 +756,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "byte",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "bytearray",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "char",
@@ -1001,6 +858,90 @@
     }
   },
   {
+    "type": "collection_pattern",
+    "named": true,
+    "fields": {
+      "block": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "as_pattern",
+            "named": true
+          },
+          {
+            "type": "attribute_pattern",
+            "named": true
+          },
+          {
+            "type": "collection_pattern",
+            "named": true
+          },
+          {
+            "type": "conjunct_pattern",
+            "named": true
+          },
+          {
+            "type": "cons_pattern",
+            "named": true
+          },
+          {
+            "type": "const",
+            "named": true
+          },
+          {
+            "type": "disjunct_pattern",
+            "named": true
+          },
+          {
+            "type": "identifier_pattern",
+            "named": true
+          },
+          {
+            "type": "named_field_pattern",
+            "named": true
+          },
+          {
+            "type": "null",
+            "named": false
+          },
+          {
+            "type": "optional_pattern",
+            "named": true
+          },
+          {
+            "type": "paren_pattern",
+            "named": true
+          },
+          {
+            "type": "record_pattern",
+            "named": true
+          },
+          {
+            "type": "repeat_pattern",
+            "named": true
+          },
+          {
+            "type": "type_check_pattern",
+            "named": true
+          },
+          {
+            "type": "typed_const_pattern",
+            "named": true
+          },
+          {
+            "type": "typed_pattern",
+            "named": true
+          },
+          {
+            "type": "wildcard_pattern",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "compiler_directive_decl",
     "named": true,
     "extra": true,
@@ -1092,15 +1033,15 @@
       "required": false,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -1121,10 +1062,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -1175,15 +1112,15 @@
       "required": false,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -1204,10 +1141,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -1258,19 +1191,7 @@
       "required": true,
       "types": [
         {
-          "type": "bignum",
-          "named": true
-        },
-        {
           "type": "bool",
-          "named": true
-        },
-        {
-          "type": "byte",
-          "named": true
-        },
-        {
-          "type": "bytearray",
           "named": true
         },
         {
@@ -1298,26 +1219,6 @@
           "named": true
         },
         {
-          "type": "int16",
-          "named": true
-        },
-        {
-          "type": "int32",
-          "named": true
-        },
-        {
-          "type": "int64",
-          "named": true
-        },
-        {
-          "type": "nativeint",
-          "named": true
-        },
-        {
-          "type": "sbyte",
-          "named": true
-        },
-        {
           "type": "string",
           "named": true
         },
@@ -1326,27 +1227,7 @@
           "named": true
         },
         {
-          "type": "uint16",
-          "named": true
-        },
-        {
-          "type": "uint32",
-          "named": true
-        },
-        {
-          "type": "uint64",
-          "named": true
-        },
-        {
-          "type": "unativeint",
-          "named": true
-        },
-        {
           "type": "unit",
-          "named": true
-        },
-        {
-          "type": "verbatim_bytearray",
           "named": true
         },
         {
@@ -1671,15 +1552,15 @@
       "required": false,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -1700,10 +1581,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -2027,15 +1904,15 @@
       "required": true,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -2056,10 +1933,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -2494,15 +2367,15 @@
       "required": true,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -2523,10 +2396,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -2622,63 +2491,6 @@
     }
   },
   {
-    "type": "int16",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "int32",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "int64",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "interface_implementation",
     "named": true,
     "fields": {
@@ -2750,94 +2562,6 @@
           "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "list_pattern",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "array_pattern",
-            "named": true
-          },
-          {
-            "type": "as_pattern",
-            "named": true
-          },
-          {
-            "type": "attribute_pattern",
-            "named": true
-          },
-          {
-            "type": "conjunct_pattern",
-            "named": true
-          },
-          {
-            "type": "cons_pattern",
-            "named": true
-          },
-          {
-            "type": "const",
-            "named": true
-          },
-          {
-            "type": "disjunct_pattern",
-            "named": true
-          },
-          {
-            "type": "identifier_pattern",
-            "named": true
-          },
-          {
-            "type": "list_pattern",
-            "named": true
-          },
-          {
-            "type": "named_field_pattern",
-            "named": true
-          },
-          {
-            "type": "null",
-            "named": false
-          },
-          {
-            "type": "optional_pattern",
-            "named": true
-          },
-          {
-            "type": "paren_pattern",
-            "named": true
-          },
-          {
-            "type": "record_pattern",
-            "named": true
-          },
-          {
-            "type": "repeat_pattern",
-            "named": true
-          },
-          {
-            "type": "type_check_pattern",
-            "named": true
-          },
-          {
-            "type": "typed_const_pattern",
-            "named": true
-          },
-          {
-            "type": "typed_pattern",
-            "named": true
-          },
-          {
-            "type": "wildcard_pattern",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -3172,15 +2896,15 @@
         "required": false,
         "types": [
           {
-            "type": "array_pattern",
-            "named": true
-          },
-          {
             "type": "as_pattern",
             "named": true
           },
           {
             "type": "attribute_pattern",
+            "named": true
+          },
+          {
+            "type": "collection_pattern",
             "named": true
           },
           {
@@ -3201,10 +2925,6 @@
           },
           {
             "type": "identifier_pattern",
-            "named": true
-          },
-          {
-            "type": "list_pattern",
             "named": true
           },
           {
@@ -3532,15 +3252,15 @@
       "required": false,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -3565,10 +3285,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -3709,25 +3425,6 @@
     }
   },
   {
-    "type": "nativeint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "optional_pattern",
     "named": true,
     "fields": {},
@@ -3736,15 +3433,15 @@
       "required": false,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -3765,10 +3462,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -3846,15 +3539,15 @@
       "required": false,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -3875,10 +3568,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -4367,10 +4056,6 @@
           "named": true
         },
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
@@ -4384,6 +4069,10 @@
         },
         {
           "type": "class_as_reference",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -4404,10 +4093,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -4686,15 +4371,15 @@
       "required": false,
       "types": [
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -4715,10 +4400,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -4755,25 +4436,6 @@
         },
         {
           "type": "wildcard_pattern",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "sbyte",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
           "named": true
         }
       ]
@@ -5575,15 +5237,15 @@
           "named": true
         },
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -5624,10 +5286,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -5755,82 +5413,6 @@
         },
         {
           "type": "type_argument",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "uint16",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "uint32",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "uint64",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "unativeint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
           "named": true
         }
       ]
@@ -6044,15 +5626,15 @@
           "named": true
         },
         {
-          "type": "array_pattern",
-          "named": true
-        },
-        {
           "type": "as_pattern",
           "named": true
         },
         {
           "type": "attribute_pattern",
+          "named": true
+        },
+        {
+          "type": "collection_pattern",
           "named": true
         },
         {
@@ -6073,10 +5655,6 @@
         },
         {
           "type": "identifier_pattern",
-          "named": true
-        },
-        {
-          "type": "list_pattern",
           "named": true
         },
         {
@@ -6167,11 +5745,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "verbatim_bytearray",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "verbatim_string",
@@ -6355,10 +5928,6 @@
     "named": false
   },
   {
-    "type": "L",
-    "named": false
-  },
-  {
     "type": "LF",
     "named": false
   },
@@ -6499,10 +6068,6 @@
     "named": false
   },
   {
-    "type": "l",
-    "named": false
-  },
-  {
     "type": "let",
     "named": false
   },
@@ -6529,10 +6094,6 @@
   },
   {
     "type": "mutable",
-    "named": false
-  },
-  {
-    "type": "n",
     "named": false
   },
   {
@@ -6576,10 +6137,6 @@
     "named": false
   },
   {
-    "type": "s",
-    "named": false
-  },
-  {
     "type": "set",
     "named": false
   },
@@ -6600,10 +6157,6 @@
     "named": false
   },
   {
-    "type": "un",
-    "named": false
-  },
-  {
     "type": "unit",
     "named": false
   },
@@ -6613,14 +6166,6 @@
   },
   {
     "type": "unmanaged",
-    "named": false
-  },
-  {
-    "type": "us",
-    "named": false
-  },
-  {
-    "type": "uy",
     "named": false
   },
   {
@@ -6651,10 +6196,6 @@
     "type": "xml_doc",
     "named": true,
     "extra": true
-  },
-  {
-    "type": "y",
-    "named": false
   },
   {
     "type": "{",

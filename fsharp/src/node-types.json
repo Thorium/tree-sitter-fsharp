@@ -12,10 +12,6 @@
         "named": true
       },
       {
-        "type": "array_expression",
-        "named": true
-      },
-      {
         "type": "begin_end_expression",
         "named": true
       },
@@ -25,6 +21,10 @@
       },
       {
         "type": "ce_expression",
+        "named": true
+      },
+      {
+        "type": "collection_expression",
         "named": true
       },
       {
@@ -41,10 +41,6 @@
       },
       {
         "type": "dot_expression",
-        "named": true
-      },
-      {
-        "type": "for_expression",
         "named": true
       },
       {
@@ -68,15 +64,15 @@
         "named": true
       },
       {
-        "type": "list_expression",
-        "named": true
-      },
-      {
         "type": "literal_expression",
         "named": true
       },
       {
         "type": "long_identifier_or_op",
+        "named": true
+      },
+      {
+        "type": "loop_expression",
         "named": true
       },
       {
@@ -125,10 +121,6 @@
       },
       {
         "type": "typed_expression",
-        "named": true
-      },
-      {
-        "type": "while_expression",
         "named": true
       }
     ]
@@ -184,15 +176,15 @@
     "named": true,
     "subtypes": [
       {
-        "type": "array_pattern",
-        "named": true
-      },
-      {
         "type": "as_pattern",
         "named": true
       },
       {
         "type": "attribute_pattern",
+        "named": true
+      },
+      {
+        "type": "collection_pattern",
         "named": true
       },
       {
@@ -213,10 +205,6 @@
       },
       {
         "type": "identifier_pattern",
-        "named": true
-      },
-      {
-        "type": "list_pattern",
         "named": true
       },
       {
@@ -596,49 +584,6 @@
     }
   },
   {
-    "type": "array_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "_expression",
-          "named": true
-        },
-        {
-          "type": "range_expression",
-          "named": true
-        },
-        {
-          "type": "short_comp_expression",
-          "named": true
-        },
-        {
-          "type": "slice_ranges",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "array_pattern",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "_pattern",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "as_pattern",
     "named": true,
     "fields": {},
@@ -761,21 +706,6 @@
     }
   },
   {
-    "type": "bignum",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "block_comment",
     "named": true,
     "extra": true,
@@ -814,30 +744,6 @@
         ]
       }
     }
-  },
-  {
-    "type": "byte",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "bytearray",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "ce_expression",
@@ -918,6 +824,49 @@
     }
   },
   {
+    "type": "collection_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        },
+        {
+          "type": "range_expression",
+          "named": true
+        },
+        {
+          "type": "short_comp_expression",
+          "named": true
+        },
+        {
+          "type": "slice_ranges",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "collection_pattern",
+    "named": true,
+    "fields": {
+      "block": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "_pattern",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "compiler_directive_decl",
     "named": true,
     "extra": true,
@@ -991,19 +940,7 @@
       "required": true,
       "types": [
         {
-          "type": "bignum",
-          "named": true
-        },
-        {
           "type": "bool",
-          "named": true
-        },
-        {
-          "type": "byte",
-          "named": true
-        },
-        {
-          "type": "bytearray",
           "named": true
         },
         {
@@ -1031,26 +968,6 @@
           "named": true
         },
         {
-          "type": "int16",
-          "named": true
-        },
-        {
-          "type": "int32",
-          "named": true
-        },
-        {
-          "type": "int64",
-          "named": true
-        },
-        {
-          "type": "nativeint",
-          "named": true
-        },
-        {
-          "type": "sbyte",
-          "named": true
-        },
-        {
           "type": "string",
           "named": true
         },
@@ -1059,27 +976,7 @@
           "named": true
         },
         {
-          "type": "uint16",
-          "named": true
-        },
-        {
-          "type": "uint32",
-          "named": true
-        },
-        {
-          "type": "uint64",
-          "named": true
-        },
-        {
-          "type": "unativeint",
-          "named": true
-        },
-        {
           "type": "unit",
-          "named": true
-        },
-        {
-          "type": "verbatim_bytearray",
           "named": true
         },
         {
@@ -1590,33 +1487,6 @@
     "fields": {}
   },
   {
-    "type": "for_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "_expression",
-          "named": true
-        },
-        {
-          "type": "_pattern",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "range_expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "format_string",
     "named": true,
     "fields": {},
@@ -1992,63 +1862,6 @@
     "fields": {}
   },
   {
-    "type": "int16",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "int32",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "int64",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "interface_implementation",
     "named": true,
     "fields": {
@@ -2072,49 +1885,6 @@
           "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "list_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "_expression",
-          "named": true
-        },
-        {
-          "type": "range_expression",
-          "named": true
-        },
-        {
-          "type": "short_comp_expression",
-          "named": true
-        },
-        {
-          "type": "slice_ranges",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "list_pattern",
-    "named": true,
-    "fields": {
-      "block": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "_pattern",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -2184,6 +1954,33 @@
         },
         {
           "type": "op_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "loop_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        },
+        {
+          "type": "_pattern",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "range_expression",
           "named": true
         }
       ]
@@ -2719,25 +2516,6 @@
       "types": [
         {
           "type": "_module_elem",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "nativeint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
           "named": true
         }
       ]
@@ -3323,25 +3101,6 @@
       "types": [
         {
           "type": "rule",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "sbyte",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
           "named": true
         }
       ]
@@ -4090,82 +3849,6 @@
     }
   },
   {
-    "type": "uint16",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "uint32",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "uint64",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "unativeint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "xint",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "union_type_case",
     "named": true,
     "fields": {},
@@ -4288,29 +3971,9 @@
     }
   },
   {
-    "type": "verbatim_bytearray",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "verbatim_string",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "while_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "_expression",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "with_field_expression",
@@ -4587,10 +4250,6 @@
     "named": false
   },
   {
-    "type": "L",
-    "named": false
-  },
-  {
     "type": "LF",
     "named": false
   },
@@ -4791,10 +4450,6 @@
     "named": false
   },
   {
-    "type": "l",
-    "named": false
-  },
-  {
     "type": "lazy",
     "named": false
   },
@@ -4833,10 +4488,6 @@
   },
   {
     "type": "mutable",
-    "named": false
-  },
-  {
-    "type": "n",
     "named": false
   },
   {
@@ -4888,10 +4539,6 @@
     "named": false
   },
   {
-    "type": "s",
-    "named": false
-  },
-  {
     "type": "set",
     "named": false
   },
@@ -4920,10 +4567,6 @@
     "named": false
   },
   {
-    "type": "un",
-    "named": false
-  },
-  {
     "type": "unit",
     "named": false
   },
@@ -4940,19 +4583,11 @@
     "named": false
   },
   {
-    "type": "us",
-    "named": false
-  },
-  {
     "type": "use",
     "named": false
   },
   {
     "type": "use!",
-    "named": false
-  },
-  {
-    "type": "uy",
     "named": false
   },
   {
@@ -4991,10 +4626,6 @@
     "type": "xml_doc",
     "named": true,
     "extra": true
-  },
-  {
-    "type": "y",
-    "named": false
   },
   {
     "type": "yield",

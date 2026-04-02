@@ -4,9 +4,8 @@
   (paren_expression)
   (brace_expression)
   (anon_record_expression)
-  (list_expression)
-  (array_expression)
-  (while_expression)
+  (collection_expression)
+  (loop_expression)
   (if_expression)
   (elif_expression)
   (rule)
@@ -28,10 +27,10 @@
 (anon_record_expression
   "|}" @indent.branch)
 
-(list_expression
+(collection_expression
   "]" @indent.branch)
 
-(array_expression
+(collection_expression
   "|]" @indent.branch)
 
 (ERROR

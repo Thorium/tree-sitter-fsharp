@@ -237,7 +237,7 @@ let f =
               (long_identifier_or_op
                 (identifier))
               (paren_pattern
-                (list_pattern
+                (collection_pattern
                   (identifier_pattern
                     (long_identifier_or_op
                       (identifier))
@@ -254,7 +254,7 @@ let f =
                       (identifier))
                     (paren_pattern
                       (repeat_pattern
-                        (list_pattern
+                        (collection_pattern
                           (identifier_pattern
                             (long_identifier_or_op
                               (identifier)))
@@ -282,8 +282,8 @@ let [] = []
   (declaration_expression
     (function_or_value_defn
       (value_declaration_left
-        (list_pattern))
-      (list_expression))))
+        (collection_pattern))
+      (collection_expression))))
 
 ================================================================================
 empty array pattern
@@ -297,8 +297,8 @@ let [||] = [||]
   (declaration_expression
     (function_or_value_defn
       (value_declaration_left
-        (array_pattern))
-      (array_expression))))
+        (collection_pattern))
+      (collection_expression))))
 
 ================================================================================
 Identifier pattern with negative int
@@ -571,7 +571,7 @@ do
                     (long_identifier
                       (identifier)
                       (identifier)))
-                  (array_pattern)
+                  (collection_pattern)
                   (const
                     (bool))))
               (wildcard_pattern))

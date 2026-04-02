@@ -279,7 +279,7 @@ do (A[1]).B
           (application_expression
             (long_identifier_or_op
               (identifier))
-            (list_expression
+            (collection_expression
               (const
                 (int)))))
         (long_identifier_or_op
@@ -317,7 +317,7 @@ do test[test]
       (application_expression
         (long_identifier_or_op
           (identifier))
-        (list_expression
+        (collection_expression
           (long_identifier_or_op
             (identifier)))))))
 
@@ -467,7 +467,7 @@ do [2; 3; 4]
 (file
   (declaration_expression
     (do
-      (list_expression
+      (collection_expression
         (const
           (int))
         (const
@@ -486,7 +486,7 @@ do [2; 3; 4;]
 (file
   (declaration_expression
     (do
-      (list_expression
+      (collection_expression
         (const
           (int))
         (const
@@ -505,7 +505,7 @@ do [|2; 3; 4;|]
 (file
   (declaration_expression
     (do
-      (array_expression
+      (collection_expression
         (const
           (int))
         (const
@@ -532,7 +532,7 @@ let xs =
         (identifier_pattern
           (long_identifier_or_op
             (identifier))))
-      (array_expression
+      (collection_expression
         (const
           (int))
         (const
@@ -552,14 +552,14 @@ do [2; 3; 4][1]
   (declaration_expression
     (do
       (application_expression
-        (list_expression
+        (collection_expression
           (const
             (int))
           (const
             (int))
           (const
             (int)))
-        (list_expression
+        (collection_expression
           (const
             (int)))))))
 
@@ -575,10 +575,10 @@ do [2][1]
   (declaration_expression
     (do
       (application_expression
-        (list_expression
+        (collection_expression
           (const
             (int)))
-        (list_expression
+        (collection_expression
           (const
             (int)))))))
 
@@ -594,10 +594,10 @@ do [2] [1]
   (declaration_expression
     (do
       (application_expression
-        (list_expression
+        (collection_expression
           (const
             (int)))
-        (list_expression
+        (collection_expression
           (const
             (int)))))))
 
@@ -612,7 +612,7 @@ do [|2; 3; 4|]
 (file
   (declaration_expression
     (do
-      (array_expression
+      (collection_expression
         (const
           (int))
         (const
@@ -632,14 +632,14 @@ do [|2; 3; 4|][1]
   (declaration_expression
     (do
       (application_expression
-        (array_expression
+        (collection_expression
           (const
             (int))
           (const
             (int))
           (const
             (int)))
-        (list_expression
+        (collection_expression
           (const
             (int)))))))
 
@@ -655,10 +655,10 @@ do [|2|][1]
   (declaration_expression
     (do
       (application_expression
-        (array_expression
+        (collection_expression
           (const
             (int)))
-        (list_expression
+        (collection_expression
           (const
             (int)))))))
 
@@ -674,10 +674,10 @@ do [|2|] [|1|]
   (declaration_expression
     (do
       (application_expression
-        (array_expression
+        (collection_expression
           (const
             (int)))
-        (array_expression
+        (collection_expression
           (const
             (int)))))))
 
@@ -1044,14 +1044,14 @@ let x =
             (identifier_pattern
               (long_identifier_or_op
                 (identifier))))
-          (list_expression
+          (collection_expression
             (long_identifier_or_op
               (identifier))))
         (application_expression
           (application_expression
             (long_identifier_or_op
               (identifier))
-            (list_expression
+            (collection_expression
               (const
                 (int))))
           (const
@@ -1083,7 +1083,7 @@ let x =
             (identifier_pattern
               (long_identifier_or_op
                 (identifier))))
-          (list_expression
+          (collection_expression
             (const
               (int))
             (const
@@ -1091,7 +1091,7 @@ let x =
         (application_expression
           (long_identifier_or_op
             (identifier))
-          (list_expression
+          (collection_expression
             (declaration_expression
               (function_or_value_defn
                 (value_declaration_left
@@ -1571,7 +1571,7 @@ do
             (field_initializer
               (long_identifier
                 (identifier))
-              (list_expression))
+              (collection_expression))
             (field_initializer
               (long_identifier
                 (identifier))
@@ -1737,7 +1737,7 @@ let x =
         (identifier_pattern
           (long_identifier_or_op
             (identifier))))
-      (for_expression
+      (loop_expression
         (identifier_pattern
           (long_identifier_or_op
             (identifier)))
@@ -1767,7 +1767,7 @@ let x =
         (identifier_pattern
           (long_identifier_or_op
             (identifier))))
-      (for_expression
+      (loop_expression
         (identifier)
         (const
           (int))
@@ -1797,7 +1797,7 @@ let x =
         (identifier_pattern
           (long_identifier_or_op
             (identifier))))
-      (for_expression
+      (loop_expression
         (identifier)
         (const
           (int))
@@ -2179,7 +2179,7 @@ let a b =
                 (application_expression
                   (long_identifier_or_op
                     (identifier))
-                  (list_expression
+                  (collection_expression
                     (const
                       (int)))))
               (infix_op)
@@ -2396,7 +2396,7 @@ let f xs =
         (application_expression
           (long_identifier_or_op
             (identifier))
-          (list_expression
+          (collection_expression
             (slice_ranges
               (slice_range
                 (const
@@ -2405,7 +2405,7 @@ let f xs =
           (application_expression
             (long_identifier_or_op
               (identifier))
-            (list_expression
+            (collection_expression
               (slice_ranges
                 (slice_range
                   (const
@@ -2414,7 +2414,7 @@ let f xs =
             (application_expression
               (long_identifier_or_op
                 (identifier))
-              (list_expression
+              (collection_expression
                 (slice_ranges
                   (slice_range
                     (const
@@ -2425,7 +2425,7 @@ let f xs =
               (application_expression
                 (long_identifier_or_op
                   (identifier))
-                (list_expression
+                (collection_expression
                   (slice_ranges
                     (slice_range
                       (const
@@ -2434,7 +2434,7 @@ let f xs =
                 (application_expression
                   (long_identifier_or_op
                     (identifier))
-                  (list_expression
+                  (collection_expression
                     (slice_ranges
                       (slice_range
                         (const
@@ -2442,7 +2442,7 @@ let f xs =
                 (application_expression
                   (long_identifier_or_op
                     (identifier))
-                  (list_expression
+                  (collection_expression
                     (slice_ranges
                       (slice_range
                         (const
@@ -2476,7 +2476,7 @@ let f xs =
         (application_expression
           (long_identifier_or_op
             (identifier))
-          (array_expression
+          (collection_expression
             (slice_ranges
               (slice_range
                 (const
@@ -2485,7 +2485,7 @@ let f xs =
           (application_expression
             (long_identifier_or_op
               (identifier))
-            (array_expression
+            (collection_expression
               (slice_ranges
                 (slice_range
                   (const
@@ -2494,7 +2494,7 @@ let f xs =
             (application_expression
               (long_identifier_or_op
                 (identifier))
-              (array_expression
+              (collection_expression
                 (slice_ranges
                   (slice_range
                     (const
@@ -2505,7 +2505,7 @@ let f xs =
               (application_expression
                 (long_identifier_or_op
                   (identifier))
-                (array_expression
+                (collection_expression
                   (slice_ranges
                     (slice_range
                       (const
@@ -2514,7 +2514,7 @@ let f xs =
                 (application_expression
                   (long_identifier_or_op
                     (identifier))
-                  (array_expression
+                  (collection_expression
                     (slice_ranges
                       (slice_range
                         (const
@@ -2522,7 +2522,7 @@ let f xs =
                 (application_expression
                   (long_identifier_or_op
                     (identifier))
-                  (array_expression
+                  (collection_expression
                     (slice_ranges
                       (slice_range
                         (const
@@ -2544,7 +2544,7 @@ do
     (do
       (infix_expression
         (infix_expression
-          (list_expression)
+          (collection_expression)
           (infix_op)
           (long_identifier_or_op
             (long_identifier
@@ -2595,7 +2595,7 @@ let f =
         (identifier_pattern
           (long_identifier_or_op
             (identifier))))
-      (array_expression
+      (collection_expression
         (const
           (string))
         (if_expression
@@ -2738,7 +2738,7 @@ do
   (declaration_expression
     (do
       (sequential_expression
-        (while_expression
+        (loop_expression
           (const
             (bool))
           (const
@@ -3080,7 +3080,7 @@ do
 (file
   (declaration_expression
     (do
-      (for_expression
+      (loop_expression
         (identifier_pattern
           (long_identifier_or_op
             (identifier)))
@@ -3105,7 +3105,7 @@ do
 (file
   (declaration_expression
     (do
-      (for_expression
+      (loop_expression
         (identifier_pattern
           (long_identifier_or_op
             (identifier)))
@@ -3132,7 +3132,7 @@ do
 (file
   (declaration_expression
     (do
-      (for_expression
+      (loop_expression
         (identifier_pattern
           (long_identifier_or_op
             (identifier)))
@@ -3169,7 +3169,7 @@ let x
             (identifier))
           (long_identifier
             (identifier))))
-      (list_expression
+      (collection_expression
         (const
           (int))
         (const
@@ -3180,7 +3180,7 @@ let x
         (identifier_pattern
           (long_identifier_or_op
             (identifier))))
-      (list_expression
+      (collection_expression
         (const
           (int))
         (const
@@ -3941,7 +3941,7 @@ let results =
       (ce_expression
         (long_identifier_or_op
           (identifier))
-        (for_expression
+        (loop_expression
           (identifier_pattern
             (long_identifier_or_op
               (identifier)))
@@ -3992,7 +3992,7 @@ let x =
       (ce_expression
         (long_identifier_or_op
           (identifier))
-        (for_expression
+        (loop_expression
           (identifier_pattern
             (long_identifier_or_op
               (identifier)))
@@ -4045,7 +4045,7 @@ let x =
       (ce_expression
         (long_identifier_or_op
           (identifier))
-        (for_expression
+        (loop_expression
           (identifier_pattern
             (long_identifier_or_op
               (identifier)))
@@ -4096,7 +4096,7 @@ let x =
       (ce_expression
         (long_identifier_or_op
           (identifier))
-        (for_expression
+        (loop_expression
           (identifier_pattern
             (long_identifier_or_op
               (identifier)))
@@ -4188,7 +4188,7 @@ let n =
       (ce_expression
         (long_identifier_or_op
           (identifier))
-        (for_expression
+        (loop_expression
           (identifier_pattern
             (long_identifier_or_op
               (identifier)))
@@ -4241,7 +4241,7 @@ let n =
       (ce_expression
         (long_identifier_or_op
           (identifier))
-        (for_expression
+        (loop_expression
           (identifier_pattern
             (long_identifier_or_op
               (identifier)))
@@ -4263,7 +4263,7 @@ let n =
       (ce_expression
         (long_identifier_or_op
           (identifier))
-        (for_expression
+        (loop_expression
           (identifier_pattern
             (long_identifier_or_op
               (identifier)))
@@ -4282,7 +4282,7 @@ let n =
       (ce_expression
         (long_identifier_or_op
           (identifier))
-        (for_expression
+        (loop_expression
           (identifier_pattern
             (long_identifier_or_op
               (identifier)))
@@ -4326,7 +4326,7 @@ let q2 =
       (ce_expression
         (long_identifier_or_op
           (identifier))
-        (for_expression
+        (loop_expression
           (identifier_pattern
             (long_identifier_or_op
               (identifier)))
@@ -4383,7 +4383,7 @@ let q2 =
       (ce_expression
         (long_identifier_or_op
           (identifier))
-        (for_expression
+        (loop_expression
           (identifier_pattern
             (long_identifier_or_op
               (identifier)))
@@ -4646,7 +4646,7 @@ let x =
                   (identifier))
                 (long_identifier_or_op
                   (identifier)))
-              (list_expression
+              (collection_expression
                 (long_identifier_or_op
                   (identifier))))))))))
 
@@ -4704,7 +4704,7 @@ let x =
                     (identifier))
                   (long_identifier_or_op
                     (identifier)))
-                (list_expression
+                (collection_expression
                   (long_identifier_or_op
                     (identifier)))))))))))
 
