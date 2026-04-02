@@ -383,6 +383,52 @@ module A =
               (int))))))))
 
 ================================================================================
+preproc_if in named module with multiple module elements
+================================================================================
+
+module Example
+
+#if A
+let x = 1
+let y = 2
+#endif
+
+let z = 3
+
+--------------------------------------------------------------------------------
+
+(file
+  (named_module
+    (long_identifier
+      (identifier))
+    (preproc_if
+      (identifier)
+      (declaration_expression
+        (function_or_value_defn
+          (value_declaration_left
+            (identifier_pattern
+              (long_identifier_or_op
+                (identifier))))
+          (const
+            (int))))
+      (declaration_expression
+        (function_or_value_defn
+          (value_declaration_left
+            (identifier_pattern
+              (long_identifier_or_op
+                (identifier))))
+          (const
+            (int)))))
+    (declaration_expression
+      (function_or_value_defn
+        (value_declaration_left
+          (identifier_pattern
+            (long_identifier_or_op
+              (identifier))))
+        (const
+          (int))))))
+
+================================================================================
 preproc_if in class definition
 ================================================================================
 
@@ -678,6 +724,37 @@ let f = ()
         (identifier_pattern
           (long_identifier_or_op
             (identifier))))
+      (const
+        (unit)))))
+
+================================================================================
+top-level assembly attribute in namespace
+================================================================================
+
+namespace N
+
+[<assembly: System.Runtime.CompilerServices.InternalsVisibleTo("X")>]
+()
+
+--------------------------------------------------------------------------------
+
+(file
+  (namespace
+    (long_identifier
+      (identifier))
+    (declaration_expression
+      (attributes
+        (attribute
+          (identifier)
+          (simple_type
+            (long_identifier
+              (identifier)
+              (identifier)
+              (identifier)
+              (identifier)))
+          (paren_expression
+            (const
+              (string)))))
       (const
         (unit)))))
 

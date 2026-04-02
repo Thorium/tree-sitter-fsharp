@@ -1618,12 +1618,12 @@ derived measure type definition
             (simple_type
               (long_identifier
                 (identifier))))
-          (measure_power
-            (measure_atom
-              (simple_type
-                (long_identifier
-                  (identifier))))
-            (int)))))))
+           (measure_power
+             (measure_atom
+               (simple_type
+                 (long_identifier
+                   (identifier))))
+             (int)))))))
 
 ================================================================================
 method with complex generic type constraints
@@ -2621,6 +2621,7 @@ type A = A
         (long_identifier_or_op
           (long_identifier
             (identifier)))))))
+
 ================================================================================
 secondary constructor with then expression
 ================================================================================

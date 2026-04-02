@@ -514,6 +514,33 @@ do [|2; 3; 4;|]
           (int))))))
 
 ================================================================================
+multiline array after inline first element
+================================================================================
+
+let xs =
+  [| 1;
+    2;
+    3
+  |]
+
+--------------------------------------------------------------------------------
+
+(file
+  (declaration_expression
+    (function_or_value_defn
+      (value_declaration_left
+        (identifier_pattern
+          (long_identifier_or_op
+            (identifier))))
+      (array_expression
+        (const
+          (int))
+        (const
+          (int))
+        (const
+          (int))))))
+
+================================================================================
 index list expressions
 ================================================================================
 
@@ -4613,15 +4640,15 @@ let x =
                 (identifier))
               (long_identifier_or_op
                 (identifier)))
+            (application_expression
               (application_expression
-                (application_expression
-                  (long_identifier_or_op
-                    (identifier))
-                  (long_identifier_or_op
-                    (identifier)))
-                (list_expression
-                  (long_identifier_or_op
-                    (identifier))))))))))
+                (long_identifier_or_op
+                  (identifier))
+                (long_identifier_or_op
+                  (identifier)))
+              (list_expression
+                (long_identifier_or_op
+                  (identifier))))))))))
 
 ================================================================================
 let then short for expression in computation expression
