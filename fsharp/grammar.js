@@ -102,9 +102,9 @@ module.exports = grammar({
   conflicts: ($) => [
     [$.long_identifier, $._identifier_or_op],
     [$.simple_type, $.type_argument],
-    [$.preproc_if, $.preproc_if_in_expression],
     [$._module_elem, $.preproc_if_in_expression],
-    [$._module_expression, $._expression],
+    [$._module_body_elem, $.preproc_if_in_expression],
+    [$._module_body_elem, $.preproc_else_in_expression],
     [$.declaration_expression, $._comp_or_range_expression],
     [$.preproc_if_in_expression, $.preproc_if_in_module_body],
     [$.preproc_else_in_expression, $.preproc_else_in_module_body],
@@ -158,16 +158,6 @@ module.exports = grammar({
         repeat($._module_elem),
       ),
 
-    _preproc_toplevel_module: ($) =>
-      seq(
-        optional($.attributes),
-        "module",
-        optional($.access_modifier),
-        optional("rec"),
-        field("name", $.long_identifier),
-        repeat($._module_elem),
-      ),
-
     _module_body_elem: ($) =>
       choice(
         alias($.value_declaration, $.declaration_expression),
@@ -179,42 +169,8 @@ module.exports = grammar({
         $.exception_definition,
         $.extern_binding,
         alias($.preproc_if_in_module_body, $.preproc_if),
-        $._module_expression,
+        $._expression,
         // $.exception_defn
-      ),
-
-    _module_expression: ($) =>
-      choice(
-        "null",
-        $.const,
-        $.paren_expression,
-        $.begin_end_expression,
-        $.long_identifier_or_op,
-        $.typed_expression,
-        $.infix_expression,
-        $.index_expression,
-        $.mutate_expression,
-        $.list_expression,
-        $.array_expression,
-        $.ce_expression,
-        $.prefixed_expression,
-        $.brace_expression,
-        $.anon_record_expression,
-        $.typecast_expression,
-        $.do_expression,
-        $.fun_expression,
-        $.function_expression,
-        $.if_expression,
-        $.while_expression,
-        $.for_expression,
-        $.match_expression,
-        $.try_expression,
-        $.literal_expression,
-        $.tuple_expression,
-        $.application_expression,
-        $.dot_expression,
-        $.trait_call_expression,
-        // (static-typars : (member-sig) expr)
       ),
 
     _module_elem: ($) =>
@@ -1385,14 +1341,6 @@ module.exports = grammar({
     argument_name_spec: ($) =>
       seq(optional("?"), field("name", $.identifier), ":"),
 
-    interface_spec: ($) => seq("interface", $._type),
-
-    static_parameter: ($) =>
-      choice(
-        $.static_parameter_value,
-        seq("id", "=", $.static_parameter_value),
-      ),
-
     static_parameter_value: ($) => choice($.const, seq($.const, $._expression)),
 
     exception_definition: ($) =>
@@ -1869,14 +1817,6 @@ module.exports = grammar({
     _unicodegraph_long: (_) => /\\u[0-9a-fA-F]{8}/,
     _trigraph: (_) => /\\[0-9]{3}/,
 
-    _char_char: ($) =>
-      choice(
-        $._simple_char_char,
-        $._escape_char,
-        $._trigraph,
-        $._unicodegraph_short,
-      ),
-
     // note: \n is allowed in strings
     _simple_string_char: ($) =>
       choice(
@@ -2163,7 +2103,7 @@ module.exports = grammar({
 
     ...preprocIf(
       "",
-      ($) => choice($._module_elem, alias($._preproc_toplevel_module, $.named_module)),
+      ($) => choice($._module_elem, $.named_module),
     ),
     ...preprocIf(
       "_in_expression",
@@ -2180,7 +2120,6 @@ module.exports = grammar({
       ($) => repeat(seq(optional($._newline), $._class_type_body_inner)),
       -2,
     ),
-    ...preprocIf("_in_member_definition", ($) => repeat($.member_defn), -2),
   },
 });
 
