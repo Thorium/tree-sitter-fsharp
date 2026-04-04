@@ -255,128 +255,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_module_expression"
-        }
-      ]
-    },
-    "_module_expression": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "null"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "const"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "paren_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "begin_end_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "long_identifier_or_op"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "typed_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "infix_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "index_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "mutate_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "list_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "array_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "ce_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "prefixed_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "brace_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "anon_record_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "typecast_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "do_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "fun_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "function_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "if_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "while_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "for_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "match_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "try_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "literal_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "tuple_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "application_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "dot_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "trait_call_expression"
+          "name": "_expression"
         }
       ]
     },
@@ -10295,16 +10174,16 @@
       "type_argument"
     ],
     [
-      "preproc_if",
-      "preproc_if_in_expression"
-    ],
-    [
       "_module_elem",
       "preproc_if_in_expression"
     ],
     [
-      "_module_expression",
-      "_expression"
+      "_module_body_elem",
+      "preproc_if_in_expression"
+    ],
+    [
+      "_module_body_elem",
+      "preproc_else_in_expression"
     ],
     [
       "declaration_expression",
