@@ -4101,3 +4101,81 @@ type [<Struct>]W = NormalWhere | HavingWhere
           (identifier))
         (union_type_case
           (identifier))))))
+
+================================================================================
+operator definition as static member
+================================================================================
+
+type Behavior() =
+    static member (=.) (left : _ Behavior, right : _ Behavior) : _ Behavior = left.Map2 (fun (a, b) -> a = b) right
+    static member other () = 1
+
+--------------------------------------------------------------------------------
+
+(file
+  (type_definition
+    (anon_type_defn
+      (type_name
+        (identifier))
+      (primary_constr_args)
+      (type_extension_elements
+        (member_defn
+          (method_or_prop_defn
+            (property_or_ident
+              (op_identifier))
+            (typed_pattern
+              (paren_pattern
+                (repeat_pattern
+                  (typed_pattern
+                    (identifier_pattern
+                      (long_identifier_or_op
+                        (identifier)))
+                    (postfix_type
+                      (type_argument)
+                      (long_identifier
+                        (identifier))))
+                  (typed_pattern
+                    (identifier_pattern
+                      (long_identifier_or_op
+                        (identifier)))
+                    (postfix_type
+                      (type_argument)
+                      (long_identifier
+                        (identifier))))))
+              (postfix_type
+                (type_argument)
+                (long_identifier
+                  (identifier))))
+            (application_expression
+              (application_expression
+                (long_identifier_or_op
+                  (long_identifier
+                    (identifier)
+                    (identifier)))
+                (paren_expression
+                  (fun_expression
+                    (argument_patterns
+                      (repeat_pattern
+                        (identifier_pattern
+                          (long_identifier_or_op
+                            (identifier)))
+                        (identifier_pattern
+                          (long_identifier_or_op
+                            (identifier)))))
+                    (infix_expression
+                      (long_identifier_or_op
+                        (identifier))
+                      (infix_op)
+                      (long_identifier_or_op
+                        (identifier))))))
+              (long_identifier_or_op
+                (identifier))))))
+      (type_extension_elements
+        (member_defn
+          (method_or_prop_defn
+            (property_or_ident
+              (identifier))
+            (const
+              (unit))
+            (const
+              (int))))))))

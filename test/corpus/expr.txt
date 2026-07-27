@@ -6425,3 +6425,32 @@ let a = 1;;
             (identifier))))
       (const
         (int)))))
+
+================================================================================
+trailing semicolon before blank line and do binding
+================================================================================
+
+let y = 'a'.ToString();
+
+do ()
+
+--------------------------------------------------------------------------------
+
+(file
+  (declaration_expression
+    (function_or_value_defn
+      (value_declaration_left
+        (identifier_pattern
+          (long_identifier_or_op
+            (identifier))))
+      (application_expression
+        (dot_expression
+          (const
+            (char))
+          (long_identifier_or_op
+            (identifier)))
+        (unit))))
+  (declaration_expression
+    (do
+      (const
+        (unit)))))
