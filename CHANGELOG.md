@@ -12,7 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   nodes in every corpus file that has any, asserted in CI so a file cannot parse
   worse than recorded. `Parse examples` counts a file as parsed as long as a
   tree comes back, error nodes or not, so this is the gate it lacked. Modelled on
-  MangelMaxime/tree-sitter-fsharp's bench baseline.
+  MangelMaxime/tree-sitter-fsharp's bench baseline. The same check records the
+  byte size of each generated `parser.c` in `test/parser-size.txt` and fails when one
+  grows more than 15%, so a rule that quietly doubles the LR tables is caught too.
 - CI compiles every `.scm` under `queries/` and `fsharp_signature/queries/` against
   its parser; `tree-sitter test` only exercised highlights and locals.
 - `scripts/highlight-coverage.sh`: which `highlights.scm` captures no highlight

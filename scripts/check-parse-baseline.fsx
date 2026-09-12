@@ -15,7 +15,10 @@
 //     dotnet fsi scripts/check-parse-baseline.fsx --update   # accept the current state
 //
 // Needs nothing but the tree-sitter CLI. Set TREE_SITTER to pick it (default:
-// on PATH). A grammar change that makes files parse better should ship with an
+// on PATH). Record the baseline from an LF checkout of the submodules, as
+// CI has: a few corpus files parse with a different number of error nodes when
+// their line endings are CRLF, which a Windows checkout gives some of them
+// (`git -C examples/FSharp.Compiler config core.eol lf`, then `checkout-index -a -f`). A grammar change that makes files parse better should ship with an
 // updated baseline; one that makes files parse worse should say why in the PR.
 
 open System
@@ -151,6 +154,30 @@ let readBaseline () =
     else
         None
 
+/// How much each generated parser.c may grow over the size recorded in
+/// test/parser-size.txt before the check fails. parser.c is dominated by the LR
+/// tables, so its byte size tracks the state count: a rule that doubles the
+/// tables shows up here even when every test passes. 15% leaves room for
+/// ordinary grammar work; a bigger jump needs a look (or a deliberate --update).
+let SIZE_TOLERANCE = 0.15
+let sizeFile = Path.Combine(repoRoot, "test", "parser-size.txt")
+let parserFiles = [ "fsharp/src/parser.c"; "fsharp_signature/src/parser.c" ]
+
+let parserSizes () =
+    parserFiles |> List.map (fun p -> p, FileInfo(Path.Combine(repoRoot, p)).Length)
+
+let readSizes () =
+    if File.Exists sizeFile then
+        File.ReadAllLines sizeFile
+        |> Array.map (fun l -> l.Trim())
+        |> Array.filter (fun l -> l <> "" && not (l.StartsWith "#"))
+        |> Array.map (fun l ->
+            let tab = l.IndexOf '\t'
+            l.Substring(tab + 1), int64 (l.Substring(0, tab)))
+        |> Map.ofArray
+    else
+        Map.empty
+
 let paths = corpusFiles ()
 let results = errorNodeCounts paths
 let failing = results |> Array.filter (fun (_, n) -> n > 0)
@@ -173,7 +200,44 @@ if update then
     Directory.CreateDirectory(Path.GetDirectoryName baselineFile) |> ignore
     File.WriteAllText(baselineFile, String.Join("\n", lines) + "\n")
     printfn "baseline written: %s" (Path.GetRelativePath(repoRoot, baselineFile))
+
+    let sizeLines =
+        [| "# Byte size of each generated parser.c. scripts/check-parse-baseline.fsx fails"
+           sprintf "# when one grows more than %.0f%% over this; regenerate with --update after a" (100.0 * SIZE_TOLERANCE)
+           "# grammar change whose growth you have looked at and accept."
+           yield! parserSizes () |> List.map (fun (p, n) -> sprintf "%d\t%s" n p) |]
+
+    File.WriteAllText(sizeFile, String.Join("\n", sizeLines) + "\n")
+    printfn "parser sizes written: %s" (Path.GetRelativePath(repoRoot, sizeFile))
     exit 0
+
+// ---- parser size ------------------------------------------------------------
+
+let recordedSizes = readSizes ()
+let mutable sizeFailed = false
+
+for p, n in parserSizes () do
+    match Map.tryFind p recordedSizes with
+    | None -> printfn "%s: %d bytes (no recorded size; --update records it)" p n
+    | Some before ->
+        let growth = float (n - before) / float before
+        let verdict =
+            if growth > SIZE_TOLERANCE then
+                sizeFailed <- true
+                "TOO LARGE"
+            else
+                "ok"
+        printfn "%s: %d bytes, recorded %d (%+.1f%%) %s" p n before (100.0 * growth) verdict
+
+if sizeFailed then
+    eprintfn ""
+    eprintfn "REGRESSION: a generated parser grew more than %.0f%% over test/parser-size.txt." (100.0 * SIZE_TOLERANCE)
+    eprintfn "That is the LR table count, not a formatting change: look for a rule that"
+    eprintfn "made the grammar far more ambiguous (a new conflict, a wide choice in a hot"
+    eprintfn "position). If the growth is deliberate, run --update and say so in the PR."
+    exit 1
+
+// ---- error-node baseline ------------------------------------------------------
 
 let baseline =
     match readBaseline () with

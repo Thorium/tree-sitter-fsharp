@@ -225,6 +225,20 @@ A change that makes files parse better is reported as such - accept it with
 files parse worse must either be fixed or explained in the PR before the baseline
 is loosened. The file is generated; never edit it by hand.
 
+The same run checks `test/parser-size.txt`: the byte size of each generated `parser.c`,
+which tracks the LR state count. A parser more than 15% larger than recorded fails, so a
+rule that quietly doubles the tables is caught even when every test passes. `--update`
+records the current sizes once the growth has been looked at and accepted. Record it from an LF checkout of the
+submodules, as CI has: some corpus files get CRLF endings on Windows and a few of those
+parse with a different number of error nodes (`git -C examples/FSharp.Compiler config
+core.eol lf`, then `git -C examples/FSharp.Compiler checkout-index -a -f`).
+
+Two fsyacc-generated files parse with a compiler-dependent number of error nodes:
+`buildtools/fsyacc/fsyaccast.fs` and `fsyacclex.fs` give 5 and 20 with MSVC and gcc 15,
+but 6 and 27 on the GitHub runners (gcc 13, Apple clang). The baseline records the larger
+numbers, so both pass; the same input parsing differently per compiler points at
+undefined behaviour in the scanner and is worth a look on its own.
+
 `scripts/highlight-coverage.sh` lists the captures in `queries/highlights.scm` that
 no `test/highlight` assertion pins (`--check` exits 1 if there are any). When you
 add a capture, add an assertion for it.
