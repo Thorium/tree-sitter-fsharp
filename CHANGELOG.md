@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.12] - 2026-09-12
+
 ### Added
 - `queries/folds.scm` (nvim-treesitter `@fold`) and `queries/textobjects.scm`
   (nvim-treesitter-textobjects: function, class, parameter, call, block,
