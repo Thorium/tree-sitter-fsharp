@@ -20,8 +20,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Pin the tree-sitter CLI to the locked version
+        # setup-action installs the latest release by default. A new release that
+        # generates parser.c differently (0.27.0 did) then fails "Verify generated
+        # parser" on every PR, while `npm run generate` locally, which uses the
+        # version package-lock.json locks, stays consistent with the committed
+        # files. Install that version instead; dependabot bumps it with the lock.
+        id: cli
+        shell: bash
+        run: echo "ref=v$(node -p "require('./package-lock.json').packages['node_modules/tree-sitter-cli'].version")" >> "$GITHUB_OUTPUT"
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
+        with:
+          tree-sitter-ref: ${{steps.cli.outputs.ref}}
       - name: Run parser and binding tests
         uses: tree-sitter/parser-test-action@v2
         with:
@@ -40,10 +51,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true
+      - name: Pin the tree-sitter CLI to the locked version
+        id: cli
+        shell: bash
+        run: echo "ref=v$(node -p "require('./package-lock.json').packages['node_modules/tree-sitter-cli'].version")" >> "$GITHUB_OUTPUT"
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action@v2
         with:
           install-lib: false
+          tree-sitter-ref: ${{steps.cli.outputs.ref}}
       - name: Collect expected parse failures
         id: expected-failures
         shell: bash
@@ -87,6 +103,32 @@ jobs:
         env:
           TREE_SITTER: tree-sitter
         run: dotnet fsi scripts/check-fsc-detected.fsx
+      - name: Check no file parses worse than the baseline
+        # The parse step counts a file as parsed when a tree comes back, and one
+        # comes back even when it is full of ERROR nodes; a file going from 0 to
+        # 60 of them stays green there. test/parse-baseline.txt records how many
+        # each file has today; more (or a clean file gaining some) fails here.
+        if: "!cancelled()"
+        shell: bash
+        env:
+          TREE_SITTER: tree-sitter
+        run: dotnet fsi scripts/check-parse-baseline.fsx
+      - name: Check every query compiles
+        # `tree-sitter test` exercises highlights.scm and locals.scm; the others
+        # (injections, indents, tags) can name a node that no longer exists and
+        # stay silent until an editor loads them. `-p` picks the grammar: without
+        # it a .fsi is parsed with the fsharp grammar, not fsharp_signature.
+        if: "!cancelled()"
+        shell: bash
+        run: |
+          status=0
+          for q in queries/*.scm; do
+            tree-sitter query -p fsharp "$q" test/highlight/expressions.fsx > /dev/null || { echo "::error::$q does not compile against the fsharp parser"; status=1; }
+          done
+          for q in fsharp_signature/queries/*.scm; do
+            tree-sitter query -p fsharp_signature "$q" examples/FSharp.Compiler/src/FSharp.Core/seq.fsi > /dev/null || { echo "::error::$q does not compile against the fsharp_signature parser"; status=1; }
+          done
+          exit $status
   fuzz:
     name: Fuzz scanner
     runs-on: ubuntu-latest

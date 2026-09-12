@@ -211,6 +211,29 @@ while checking nothing. The list is append-only; regenerate with
 `dotnet fsi scripts/record-fsc-detected.fsx` and never delete an entry to go
 green.
 
+## Parse Baseline
+
+`test/parse-baseline.txt` records, for every corpus file under `examples/` that
+parses with errors, how many `ERROR` and `MISSING` nodes it has. `npm run
+check:baseline` (`dotnet fsi scripts/check-parse-baseline.fsx`) fails when any file has
+more than recorded, or a clean file gains some; CI runs it in the `Parse examples`
+job. The parse step itself only notices a file that yields no tree at all, and a
+tree full of error nodes still counts as parsed there.
+
+A change that makes files parse better is reported as such - accept it with
+`--update` and commit the new baseline with the grammar change. A change that makes
+files parse worse must either be fixed or explained in the PR before the baseline
+is loosened. The file is generated; never edit it by hand.
+
+`scripts/highlight-coverage.sh` lists the captures in `queries/highlights.scm` that
+no `test/highlight` assertion pins (`--check` exits 1 if there are any). When you
+add a capture, add an assertion for it.
+
+The tree-sitter CLI caches compiled parsers by grammar *name* under
+`~/.cache/tree-sitter/lib`; another checkout whose grammar is also called `fsharp`
+(a second worktree, or MangelMaxime's grammar) silently overwrites it. Set
+`TREE_SITTER_LIBDIR` to a per-checkout directory when working with more than one.
+
 ## References
 
 - **Tree-sitter Documentation**: https://tree-sitter.github.io/tree-sitter/creating-parsers/index.html

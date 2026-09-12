@@ -1,0 +1,752 @@
+# Corpus files that parse with errors, and how many ERROR nodes each has (a file
+# whose only errors are MISSING nodes is recorded as 1). Asserted by
+# scripts/check-parse-baseline.fsx: a file with MORE nodes than listed here,
+# or one not listed at all, fails CI. Regenerate with
+#     dotnet fsi scripts/check-parse-baseline.fsx --update
+# after a change that makes files parse better.
+# 5317 files swept; 745 with errors; 4450 error nodes
+1	examples/FSharp.Compiler/buildtools/fslex/Arg.fs
+1	examples/FSharp.Compiler/buildtools/fslex/Parsing.fs
+3	examples/FSharp.Compiler/buildtools/fslex/fslexast.fs
+20	examples/FSharp.Compiler/buildtools/fslex/fslexlex.fs
+102	examples/FSharp.Compiler/buildtools/fslex/fslexpars.fs
+1	examples/FSharp.Compiler/buildtools/fsyacc/Arg.fs
+1	examples/FSharp.Compiler/buildtools/fsyacc/Parsing.fs
+5	examples/FSharp.Compiler/buildtools/fsyacc/fsyaccast.fs
+20	examples/FSharp.Compiler/buildtools/fsyacc/fsyacclex.fs
+84	examples/FSharp.Compiler/buildtools/fsyacc/fsyaccpars.fs
+1	examples/FSharp.Compiler/src/Compiler/Checking/AttributeChecking.fs
+36	examples/FSharp.Compiler/src/Compiler/Checking/CheckComputationExpressions.fs
+15	examples/FSharp.Compiler/src/Compiler/Checking/CheckDeclarations.fs
+128	examples/FSharp.Compiler/src/Compiler/Checking/CheckExpressions.fs
+59	examples/FSharp.Compiler/src/Compiler/Checking/CheckIncrementalClasses.fs
+1	examples/FSharp.Compiler/src/Compiler/Checking/MethodOverrides.fs
+2	examples/FSharp.Compiler/src/Compiler/Checking/NameResolution.fs
+1	examples/FSharp.Compiler/src/Compiler/Checking/NicePrint.fs
+2	examples/FSharp.Compiler/src/Compiler/Checking/PostInferenceChecks.fs
+4	examples/FSharp.Compiler/src/Compiler/Checking/QuotationTranslator.fs
+2	examples/FSharp.Compiler/src/Compiler/Checking/SignatureConformance.fs
+2	examples/FSharp.Compiler/src/Compiler/Checking/import.fs
+3	examples/FSharp.Compiler/src/Compiler/CodeGen/IlxGen.fs
+10	examples/FSharp.Compiler/src/Compiler/Driver/CompilerConfig.fs
+16	examples/FSharp.Compiler/src/Compiler/Driver/CompilerImports.fs
+1	examples/FSharp.Compiler/src/Compiler/Driver/FxResolver.fs
+9	examples/FSharp.Compiler/src/Compiler/Driver/GraphChecking/FileContentMapping.fs
+2	examples/FSharp.Compiler/src/Compiler/Driver/ParseAndCheckInputs.fs
+2	examples/FSharp.Compiler/src/Compiler/Facilities/prim-lexing.fs
+2	examples/FSharp.Compiler/src/Compiler/Interactive/fsi.fs
+1	examples/FSharp.Compiler/src/Compiler/Optimize/LowerSequences.fs
+1	examples/FSharp.Compiler/src/Compiler/Service/FSharpCheckerResults.fs
+2	examples/FSharp.Compiler/src/Compiler/Service/FSharpParseFileResults.fs
+4	examples/FSharp.Compiler/src/Compiler/Service/FSharpProjectSnapshot.fs
+5	examples/FSharp.Compiler/src/Compiler/Service/IncrementalBuild.fs
+2	examples/FSharp.Compiler/src/Compiler/Service/ServiceAssemblyContent.fs
+1	examples/FSharp.Compiler/src/Compiler/Service/ServiceDeclarationLists.fs
+1	examples/FSharp.Compiler/src/Compiler/Service/ServiceErrorResolutionHints.fs
+1	examples/FSharp.Compiler/src/Compiler/Service/SynExpr.fs
+1	examples/FSharp.Compiler/src/Compiler/Service/SynPat.fs
+1	examples/FSharp.Compiler/src/Compiler/Symbols/SymbolHelpers.fs
+1	examples/FSharp.Compiler/src/Compiler/SyntaxTree/LexFilter.fs
+4	examples/FSharp.Compiler/src/Compiler/SyntaxTree/ParseHelpers.fs
+8	examples/FSharp.Compiler/src/Compiler/TypedTree/TypedTree.fs
+1	examples/FSharp.Compiler/src/Compiler/TypedTree/TypedTreeBasics.fs
+2	examples/FSharp.Compiler/src/Compiler/TypedTree/TypedTreeOps.fs
+2	examples/FSharp.Compiler/src/Compiler/TypedTree/tainted.fs
+1	examples/FSharp.Compiler/src/Compiler/Utilities/ImmutableArray.fs
+4	examples/FSharp.Compiler/src/Compiler/Utilities/sformat.fs
+1	examples/FSharp.Compiler/src/FSharp.Core/Linq.fs
+1	examples/FSharp.Compiler/src/FSharp.Core/QueryExtensions.fs
+1	examples/FSharp.Compiler/src/FSharp.Core/SI.fs
+1	examples/FSharp.Compiler/src/FSharp.Core/array2.fs
+1	examples/FSharp.Compiler/src/FSharp.Core/array3.fs
+4	examples/FSharp.Compiler/src/FSharp.Core/local.fs
+3	examples/FSharp.Compiler/src/FSharp.Core/map.fs
+22	examples/FSharp.Compiler/src/FSharp.Core/nativeptr.fs
+529	examples/FSharp.Compiler/src/FSharp.Core/prim-types-prelude.fs
+228	examples/FSharp.Compiler/src/FSharp.Core/prim-types.fs
+7	examples/FSharp.Compiler/src/FSharp.Core/quotations.fs
+5	examples/FSharp.Compiler/src/FSharp.Core/seqcore.fs
+3	examples/FSharp.Compiler/src/fsi/fsimain.fs
+1	examples/FSharp.Compiler/tests/EndToEndBuildTests/BasicProvider/BasicProvider.Tests/BasicProvider.Tests.fs
+1	examples/FSharp.Compiler/tests/EndToEndBuildTests/BasicProvider/BasicProvider/BasicProvider.Runtime.fs
+1	examples/FSharp.Compiler/tests/EndToEndBuildTests/ComboProvider/ComboProvider.Tests/ComboProvider.Tests.fs
+83	examples/FSharp.Compiler/tests/EndToEndBuildTests/ProvidedTypes/ProvidedTypes.fs
+2	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/CompilerOptions/fsc/checked/checked01.fs
+2	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/CompilerOptions/fsc/checked/unchecked01.fs
+3	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/CompilerOptions/fsc/codepage/libCodepage.fs
+3	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/AccessibilityAnnotations/OnOverridesAndIFaceImpl/E_OnOverrides03.fs
+3	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/AccessibilityAnnotations/PermittedLocations/E_accessibilityOnInterface.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/AccessibilityAnnotations/PermittedLocations/E_accessibilityOnInterface04.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/AccessibilityAnnotations/PermittedLocations/E_accessibilityOnInterface05.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/AccessibilityAnnotations/PermittedLocations/E_accessibilityOnInterface06.fs
+3	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/AccessibilityAnnotations/PermittedLocations/E_accessibilityOnRecords.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/AccessibilityAnnotations/PermittedLocations/E_accessibilityOnRecords02.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/AccessibilityAnnotations/PermittedLocations/E_orderingOfAccessibilityKeyword_let01.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/AccessibilityAnnotations/PermittedLocations/E_orderingOfAccessibilityKeyword_member01.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/AccessibilityAnnotations/PermittedLocations/E_orderingOfAccessibilityKeyword_type01.fs
+2	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/CustomAttributes/AttributeUsage/E_AttributeTargetIsMethod03.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/EntryPoint/entrypointandFSI.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/ImportDeclarations/E_openInTypeDecl.fs
+3	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/ImportDeclarations/E_openModInFun.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/LetBindings/Basic/E_ErrorsforIncompleteTryWith.fs
+4	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/LetBindings/Basic/E_GenericTypeAnnotations01.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/LetBindings/Basic/E_Pathological01.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/LetBindings/Basic/E_Pathological03.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/LetBindings/Basic/E_Pathological05.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/LetBindings/Basic/E_Pathological06.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/MemberDefinitions/MethodsAndProperties/E_ActivePatternMember02.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/MemberDefinitions/MethodsAndProperties/E_Properties02.fs
+2	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/MemberDefinitions/NamedArguments/E_SyntaxErrors01.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/ModuleAbbreviations/E_InvalidAbbrevName01.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/ModuleAbbreviations/E_InvalidAbbrevName02.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/OperatorNames/BasicOperatorNames.fs
+4	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/OperatorNames/E_BasicOperatorNames01.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/StaticLet/PlainEnum.fs
+2	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/BasicGrammarElements/TypeAbbreviations/E_UnexpectedCharInTypeName01.fs
+9	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/InferenceProcedures/ByrefSafetyAnalysis/E_MigratedTest02.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/InferenceProcedures/ByrefSafetyAnalysis/E_MigratedTest03.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/InferenceProcedures/RecursiveSafetyAnalysis/E_CyclicReference01.fs
+16	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/LexicalFiltering/HighPrecedenceApplication/RangeOperator01.fs
+298	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/LexicalFiltering/OffsideExceptions/RelaxWhitespace2.fs
+5	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/PatternMatching/DynamicTypeTest/E_DynamicTest01.fs
+2	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/PatternMatching/Expression/patterns01.fs
+2	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/PatternMatching/Record/E_SyntaxError01.fs
+6	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/PatternMatching/Simple/CodeGenReg01.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/PatternMatching/Simple/E_SyntaxError01.fs
+3	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/PatternMatching/SimpleConstant/E_NoRangeConst01.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/PatternMatching/TypeConstraint/E_typecontraint01.fs
+14	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/Types/TypeConstraints/IWSAMsAndSRTPs/ConstrainedAndInterfaceCalls.fs
+9	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/Types/TypeConstraints/IWSAMsAndSRTPs/IWSAMsAndSRTPsTests.fs
+14	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/Types/TypeConstraints/IWSAMsAndSRTPs/testFiles/BasicTests.fs
+5	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/Types/TypeConstraints/IWSAMsAndSRTPs/testFiles/CheckNewSyntax.fs
+16	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/Types/TypeConstraints/IWSAMsAndSRTPs/testFiles/CheckSelfConstrainedIWSAM.fs
+3	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/Types/TypeConstraints/IWSAMsAndSRTPs/testFiles/CheckSelfConstrainedSRTP.fs
+6	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Conformance/Types/TypeConstraints/IWSAMsAndSRTPs/testFiles/TestLegacyThingsThatRegressedDuringRFC.fs
+5	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/EmittedIL/RealInternalSignature/ModuleInitialization.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/EmittedIL/Structure/DoNotInlineX.fs
+90	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/ErrorMessages/TailCallAttribute.fs
+7	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Language/StaticClassTests.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/OCamlCompat/Hat01.fs
+2	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/OCamlCompat/OCamlStyleArrayIndexing.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/OCamlCompat/W_Hat01.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/OCamlCompat/W_MultiArgumentGenericType.fs
+34	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Signatures/ImpliedSignatureHashTests.fs
+45	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/Signatures/TestCasesForGenerationRoundTrip/members_basics.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/LexicalAnalysis/Comments/E_star02.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/LexicalAnalysis/Comments/star03.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals001.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals002.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals003.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals004.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals005.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals006.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals007.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/UnitsOfMeasure/Basic/Calculus.fs
+7	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/UnitsOfMeasure/Basic/RationalExponents01.fs
+5	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/UnitsOfMeasure/Parsing/PowerSynonym.fs
+2	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/UnitsOfMeasure/Parsing/Quotient.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Conformance/UnitsOfMeasure/Parsing/Reciprocal01.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.ComponentTests/resources/tests/Diagnostics/async/UseBindingWrongForm01.fs
+8	examples/FSharp.Compiler/tests/FSharp.Compiler.Private.Scripting.UnitTests/DependencyManagerInteractiveTests.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.Service.Tests/Common.fs
+8	examples/FSharp.Compiler/tests/FSharp.Compiler.Service.Tests/EditorTests.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.Service.Tests/ExprTests.fs
+1	examples/FSharp.Compiler/tests/FSharp.Compiler.Service.Tests/MultiProjectAnalysisTests.fs
+5	examples/FSharp.Compiler/tests/FSharp.Compiler.Service.Tests/ProjectAnalysisTests.fs
+2	examples/FSharp.Compiler/tests/FSharp.Compiler.Service.Tests/Symbols.fs
+46	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/Microsoft.FSharp.Collections/Array2Module.fs
+31	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/Microsoft.FSharp.Collections/Array3Module.fs
+105	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/Microsoft.FSharp.Collections/Array4Module.fs
+198	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/Microsoft.FSharp.Collections/ArrayModule.fs
+10	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/Microsoft.FSharp.Collections/ArrayModule2.fs
+96	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/Microsoft.FSharp.Collections/ListModule.fs
+67	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/Microsoft.FSharp.Collections/SeqModule.fs
+86	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/Microsoft.FSharp.Collections/SeqModule2.fs
+3	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/Microsoft.FSharp.Collections/StringModule.fs
+2	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/Microsoft.FSharp.Core/ResultTests.fs
+1	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/Microsoft.FSharp.Quotations/FSharpQuotations.fs
+1	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/OperatorsModule1.fs
+129	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/PrimTypes.fs
+1	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/FSharp.Core/RecordTypes.fs
+4	examples/FSharp.Compiler/tests/FSharp.Core.UnitTests/TestFrameworkHelpers.fs
+1	examples/FSharp.Compiler/tests/FSharp.Test.Utilities/CompilerAssert.fs
+1	examples/FSharp.Compiler/tests/FSharp.Test.Utilities/ProjectGeneration.fs
+4	examples/FSharp.Compiler/tests/FSharp.Test.Utilities/TestFramework.fs
+5	examples/FSharp.Compiler/tests/FSharp.Test.Utilities/Utilities.fs
+6	examples/FSharp.Compiler/tests/benchmarks/CompiledCodeBenchmarks/MicroPerf/Equality/Misc.fs
+3	examples/FSharp.Compiler/tests/benchmarks/FCSBenchmarks/decentlySizedStandAloneFile.fs
+3	examples/FSharp.Compiler/tests/fsharp/Compiler/CodeGen/EmittedIL/ReferenceAssemblyTests.fs
+7	examples/FSharp.Compiler/tests/fsharp/Compiler/Language/InterfaceTests.fs
+12	examples/FSharp.Compiler/tests/fsharp/core/anon/lib.fs
+2	examples/FSharp.Compiler/tests/fsharp/core/fsfromcs/lib.fs
+1	examples/FSharp.Compiler/tests/fsharp/core/large/conditionals/LargeConditionals-maxtested.fs
+8	examples/FSharp.Compiler/tests/fsharp/core/members/absil.fs
+44	examples/FSharp.Compiler/tests/fsharp/core/members/basics/test.fs
+4	examples/FSharp.Compiler/tests/fsharp/core/members/console/console2.fs
+4	examples/FSharp.Compiler/tests/fsharp/core/members/factors-mutrec/test.fs
+4	examples/FSharp.Compiler/tests/fsharp/core/members/ops-mutrec/test.fs
+1	examples/FSharp.Compiler/tests/fsharp/core/members/set-only-property/fs.fs
+1	examples/FSharp.Compiler/tests/fsharp/core/unicode/kanji-unicode-utf7-codepage-65000.fs
+55	examples/FSharp.Compiler/tests/fsharp/regression/656/form.fs
+4	examples/FSharp.Compiler/tests/fsharp/regression/656/formshelper.fs
+12	examples/FSharp.Compiler/tests/fsharp/regression/656/playerrecord.fs
+4	examples/FSharp.Compiler/tests/fsharp/regression/656/plot.fs
+15	examples/FSharp.Compiler/tests/fsharp/regression/656/trackedplayers.fs
+20	examples/FSharp.Compiler/tests/fsharp/regression/656/traj.fs
+3	examples/FSharp.Compiler/tests/fsharp/tests.fs
+2	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg01a.fs
+5	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg02.fs
+17	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg03.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg08.fs
+3	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg09.fs
+3	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg10.fs
+15	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg104.fs
+4	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg114.fs
+2	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg115.fs
+2	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg119a.fs
+2	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg119b.fs
+4	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg12.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg133.fs
+2	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg135.fs
+7	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg18.fs
+9	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg25.fs
+2	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg29.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg35.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg38.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg41.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg45.fs
+7	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg51.fs
+5	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg59.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg60.fs
+3	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg61.fs
+4	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg63.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg65.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg93.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg94-pre.fs
+4	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/neg_anon_2.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/pos08.fs
+1	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/pos36-srtp-lib.fs
+2	examples/FSharp.Compiler/tests/fsharp/typecheck/sigs/pos37.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/DeclarationElements/ObjectConstructors/AlternateGenericTypeSyntax01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/DeclarationElements/ObjectConstructors/E_MissingArgumentForGetterProp01.fs
+4	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/DeclarationElements/P-invokeDeclarations/CallingConventions01.fs
+4	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/DeclarationElements/P-invokeDeclarations/CallingConventions01_Records.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/DeclarationElements/P-invokeDeclarations/MarshalStruct01.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/ControlFlowExpressions/TryFinally/TryFinallyInSequence01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/DataExpressions/ComputationExpressions/CombineResults01.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/DataExpressions/ObjectExpressions/W_Deprecated01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/DataExpressions/SequenceExpressions/E_final_yield_dash_gt_01.fs
+3	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/EvaluationOfElaboratedForms/letbinding_precomutation01.fs
+3	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/ExpressionQuotations/Baselines/TryFinally.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/ExpressionQuotations/Regressions/E_InvalidQuotationLiteral01.fs
+3	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/ExpressionQuotations/Regressions/E_QuotationOperators01.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/ExpressionQuotations/Regressions/E_QuotationOperators02.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/ExpressionQuotations/Regressions/E_QuotationOperators03.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/ExpressionQuotations/Regressions/E_QuotationOperators04.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/ExpressionQuotations/Regressions/OperatorInSplice.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/ExpressionQuotations/Regressions/PropertySetArgOrder.fs
+6	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/SyntacticSugar/Slices04.fs
+34	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/Expressions/SyntacticSugar/Slices05.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ImplementationFilesAndSignatureFiles/NamespacesFragmentsAndImplementationFiles/basic/E_HashDirectives01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ImplementationFilesAndSignatureFiles/NamespacesFragmentsAndImplementationFiles/basic/E_HashDirectives02.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ImplementationFilesAndSignatureFiles/NamespacesFragmentsAndImplementationFiles/basic/E_NamespaceAndModule01.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/Comments/DontEscapeCommentFromString01.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/Comments/E_IncompleteComment01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/Comments/E_IncompleteComment02.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/Comments/E_ocamlstyle_nested006.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/Comments/E_ocamlstyle_nested007.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/Comments/E_star02.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/Comments/embeddedString002.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/ConditionalCompilation/E_MustBeIdent01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/ConditionalCompilation/E_UnmatchedEndif01.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/ConditionalCompilation/InComment01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/ConditionalCompilation/InStringLiteral03.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/IdentifiersAndKeywords/E_InvalidIdentifier01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/IdentifiersAndKeywords/E_KeywordIdent01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/IdentifiersAndKeywords/E_MissingQualification.fs
+14	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/IdentifiersAndKeywords/E_ValidIdentifier04.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/NumericLiterals/E_DecimalWO0Prefix.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals001.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals002.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals003.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals004.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals005.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals006.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/NumericLiterals/E_enumNegativeLiterals007.fs
+4	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/StringsAndCharacters/E_MalformedShortUnicode01.fs
+3	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/StringsAndCharacters/TripleQuoteString01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalAnalysis/SymbolicOperators/E_CantUseDollarSign.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/LexicalFiltering/HashLight/E_UnclosedLetBlock01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/ClassTypes/AsDeclarations/SanityCheck02.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/ClassTypes/AutoProperties/E_IllegalName01.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/ClassTypes/MemberDeclarations/E_ImplementMemberNoExist.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/ClassTypes/MemberDeclarations/E_PropertyInvalidGetter01.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/ClassTypes/Misc/E_NoNestedTypes.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/EnumTypes/AttributesOn01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/EnumTypes/E_NoMethodsOnEnums01.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/InterfaceTypes/E_InheritInterface.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/InterfaceTypes/E_InterfaceNotFullyImpl01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/InterfaceTypes/E_InterfaceNotFullyImpl02.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/StructTypes/Overload_Equals.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/StructTypes/Overload_GetHashCode.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/ObjectOrientedTypeDefinitions/StructTypes/Overload_ToString.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/SpecialAttributesAndTypes/Imported/CallerInfo/CallerFilePath.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/SpecialAttributesAndTypes/Imported/CallerInfo/CallerLineNumber.fs
+4	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/TypesAndTypeConstraints/CheckingSyntacticTypes/E_Regressions01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/TypesAndTypeConstraints/TypeParameterDefinitions/HashConstraint02.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Basic/Calculus.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Basic/E_MassForce.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Basic/MassForce.fs
+7	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Basic/RationalExponents01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Constants/ieee64.fs
+5	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Diagnostics/E_ParsingRationalExponents.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Diagnostics/E_ZeroDenominator.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Parenthesis/E_Error02.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Parenthesis/E_Error03.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Parenthesis/E_Error04.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Parenthesis/E_Error05.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Parenthesis/E_Error06.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Parenthesis/E_IncompleteParens01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Parenthesis/E_IncompleteParens02.fs
+12	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Parenthesis/Positive01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Parsing/E_Nesting01.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Parsing/Quotient.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/Parsing/Reciprocal01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Conformance/UnitsOfMeasure/TypeChecker/Slash_InMethod01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/General/E_AsBindingOnInheritDecl01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/General/E_BaseInObjectExpression01.fs
+3	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/General/E_IncompleteConstruct01.fs
+3	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/General/E_IncompleteConstruct01b.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/General/E_IndexedPropertySetter01.fs
+3	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/General/E_InvalidObjectExpression01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/General/E_OCamlStylePolymorficRecordFields01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/General/E_UnexpectedKeywordAs01.fs
+3	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/General/E_UnexpectedSymbol01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/General/W_redefineOperator09.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/attrUnionCaseDecl01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/attrUnionCaseDecl01b.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/braceExpr01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/braceExpr01b.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/declExpr01.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/declExpr01b.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/fileModuleImpl02.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/fileModuleImpl02b.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/interactiveExprOrDefinitionsTerminator02.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/interactiveExprOrDefinitionsTerminator02b.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/interactiveExprOrDefinitionsTerminator06.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/interactiveExprOrDefinitionsTerminator06b.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/memberDefinitionWithoutType01b.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/monadicExprNonEmptyInitial01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/monadicExprNonEmptyInitial01b.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/monadicPatternClauses01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/monadicPatternClauses01b.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/typ01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/typ01b.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/typeConstraint01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/typeConstraint01b.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/typedSeqExprBlock01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/typedSeqExprBlock01b.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/typedSeqExprBlock02.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/NONTERM/typedSeqExprBlock02b.fs
+2	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/ParsingAtEOF/du_with01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/ParsingAtEOF/for_in01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/ParsingAtEOF/for_in_range01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/ParsingAtEOF/if01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/ParsingAtEOF/match01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/ParsingAtEOF/try01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/ParsingAtEOF/type_id_equal02.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/ParsingAtEOF/type_id_equal_curly01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/ParsingAtEOF/type_id_parens01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Diagnostics/ParsingAtEOF/while_cond01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Import/IterateOverCollections.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/Import/reference2.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/InteractiveSession/Misc/Array2D01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/InteractiveSession/Misc/BailAfterFirstError01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/InteractiveSession/Misc/NativeIntSuffix01.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/InteractiveSession/Misc/PipingWithDirectives.fs
+1	examples/FSharp.Compiler/tests/fsharpqa/Source/InteractiveSession/Misc/UNativeIntSuffix01.fs
+10	examples/FSharp.Compiler/tests/fsharpqa/Source/Misc/E_productioncoverage03.fs
+5	examples/FSharp.Compiler/tests/fsharpqa/Source/Misc/productioncoverage01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Exception/Missing name 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Exception/Recover Function Type 01.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/AnonymousRecords-01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/AnonymousRecords-02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/AnonymousRecords-03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/AnonymousRecords-04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/AnonymousRecords-05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Binary - Eq 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Binary - Eq 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Binary - Eq 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Binary - Eq 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Binary - Eq 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Binary - Plus 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Binary - Plus 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Binary - Plus 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Binary - Plus 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Do 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/DotLambda_WithoutUnderscore.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Downcast 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Downcast 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/For 03.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Id 02.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Id 03.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Id 04.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Id 05.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Id 06.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Id 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/If 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/If 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/If 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/If 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/If 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Lambda - Missing expr 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Lambda - Missing expr 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Lazy 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/List - Comprehension 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Object - Class 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Object - Class 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Object - Class 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Object - Class 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Object - Class 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Object - Class 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Object - Class 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Rarrow 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Rarrow 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Rarrow 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Anon 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Anon 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Anon 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Anon 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Anon 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Anon 07.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Anon 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Anon 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Anon 12.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Field 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Field 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Field 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Field 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Field 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Field 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Field 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Field 11.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Record - Field 13.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Set 04.fs
+3	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/SynExprAnonRecdWithStructKeyword.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/SynExprLetOrUseDoesNotContainTheRangeOfInKeyword.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/SynExprLetOrUseWhereBodyExprStartsWithTokenOfTwoCharactersDoesNotContainTheRangeOfInKeyword.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/SynExprTryFinallyContainsTheRangeOfTheTryAndWithKeyword.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try - Finally 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try - With 04.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try - With 05.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try - With 06.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try - With 08.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try - With 09.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try with - Missing expr 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try with - Missing expr 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try with - Missing expr 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try with - Missing expr 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Try with - Missing expr 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Tuple - Missing item 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Tuple - Missing item 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Tuple - Missing item 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Tuple - Missing item 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Tuple - Missing item 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Tuple - Missing item 06.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Tuple - Missing item 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Tuple - Missing item 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Tuple - Missing item 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Tuple - Missing item 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Tuple - Missing item 11.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Type test 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Type test 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Type test 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Typed 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Typed 04.fs
+18	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Unfinished escaped ident 01.fs
+4	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Unfinished escaped ident 02.fs
+6	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Unfinished escaped ident 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Upcast 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Upcast 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/Upcast 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/While 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/While 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/WhileBang 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Expression/WhileBang 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/IfThenElse/Comment after else 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Lambda/Param - Missing type 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Lambda/Param - Missing type 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Lambda/Param - Missing type 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Lambda/Param - Missing type 04.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/LeadingKeyword/SyntheticKeyword.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/LeadingKeyword/UseRecKeyword.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/MatchClause/Missing expr 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/MatchClause/Missing expr 02.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/MatchClause/Missing expr 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/MatchClause/Missing expr 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/MatchClause/Missing expr 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/MatchClause/Missing pat 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/MatchClause/Missing pat 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/MatchClause/Missing pat 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/MatchClause/Missing pat 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/MatchClause/RangeOfSingleSynMatchClauseFollowedByBar.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Measure/Constant - 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Measure/Constant - 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Measure/Constant - 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Measure/Constant - 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Measure/SynMeasureParenHasCorrectRange.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Measure/SynTypeTupleInMeasureTypeWithLeadingSlash.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Abstract - Property 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Abstract - Property 04.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Abstract - Property 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Auto property 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Auto property 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Auto property 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Auto property 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Auto property 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Auto property 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Auto property 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Auto property 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Auto property 12.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Auto property 13.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 11.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 12.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Field 13.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/GetSetMember 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Implicit ctor - Missing type 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Implicit ctor - Missing type 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Implicit ctor - Pat - Tuple 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Implicit ctor - Type - Fun 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Implicit ctor - Type - Fun 05.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Implicit ctor - Type - Fun 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Implicit ctor - Type - Tuple 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Implicit ctor - Type - Tuple 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Implicit ctor - Type - Tuple 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Inherit 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Inherit 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Inherit 08.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Interface 01.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Interface 02.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Interface 03.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Interface 04.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Interface 05.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Interface 06.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Interface 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Interface 08.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Interface 09.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Interface 10.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Let 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Let 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member - Attributes 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member - Param - Missing type 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member 03.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member 07.fs
+3	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member 11.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member 12.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Member 13.fs
+4	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/MemberMispelledToMeme.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Static 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Member/Static 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleMember/Do 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleMember/Let 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleMember/Let 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleMember/Let 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleMember/Open 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleMember/Open 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleMember/Open 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleMember/Open 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleMember/Open 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Module 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Module 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Module 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Namespace 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Namespace 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Namespace 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Namespace 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Namespace 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Namespace 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Namespace 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Namespace 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 11.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 12.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 13.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 14.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 15.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 16.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ModuleOrNamespace/Nested module 17.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/OperatorName/ActivePatternIdentifierInPrivateMember.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/ParsedHashDirective/SourceIdentifierAsParsedHashDirectiveArgument.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/As 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/As 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/As 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/As 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/As 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/As 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/As 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/As 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/As 11.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/As 12.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Cons 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Cons 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Cons 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Named field 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Record 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Record 04.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Record 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Record 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Tuple - Recover 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Tuple - Recover 02.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Tuple - Recover 03.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Tuple - Recover 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 11.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Pattern/Typed - Missing type 12.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SimplePats/SimplePats - Recover 01.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/String/SynExprInterpolatedStringWithTripleQuoteMultipleDollars.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynIdent/IncompleteLongIdent 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynIdent/IncompleteLongIdent 02.fs
+6	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynTyparDecl/Constraint intersection 01.fs
+4	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Constraint intersection 01.fs
+4	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Constraint intersection 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Constraint intersection 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Div 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Div 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Div 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Div 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Fun 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Fun 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Fun 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Fun 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Fun 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Fun 10.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/SynTypeOrWithAppTypeOnTheRightHandSide.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple - Nested 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple - Nested 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple - Nested 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple 11.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple 12.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple 13.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/SynType/Tuple 14.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/And 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/And 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/And 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/And 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/As 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/As 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/As 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/As 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/As 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/As 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/As 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Enum 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Enum 05.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Enum 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Enum 07 - Eof.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Enum 08 - Eof.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Enum 09 - Eof.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Enum 10 - Eof.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Interface 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Interface 06.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/NestedTypeHasStaticTypeAsLeadingKeyword.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Primary ctor 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Primary ctor 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Primary ctor 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Primary ctor 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Record - Access 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Record - Access 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Record - Access 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Record - Access 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Record - Mutable 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Record - Mutable 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Record 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Record 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Record 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Record 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/SynTypeTupleWithStructRecovery.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Type 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Type 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Type 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Type 05.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Type 06.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Type 07.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Type 09.fs
+3	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Type 10.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Type 11.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/Type 12.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/With 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/Type/With 05.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/Missing keyword of.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/Missing name 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/Missing name 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/Missing name 04.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/Missing name 06.fs
+2	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/Missing name 08.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/Missing name 09.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/PrivateKeywordHasRange.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/Recover Function Type 01.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/Recover Function Type 02.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/Recover Function Type 03.fs
+1	examples/FSharp.Compiler/tests/service/data/SyntaxTree/UnionCase/SynUnionCaseKindFullType.fs
+151	examples/FSharp.Compiler/tests/service/data/TestTP/ProvidedTypes.fs
+2	examples/FSharp.Compiler/vsintegration/ItemTemplates/CodeFile/Template/File.fs
+2	examples/FSharp.Compiler/vsintegration/ProjectTemplates/LibraryProject/Template/Library1.fs
+1	examples/FSharp.Compiler/vsintegration/src/FSharp.Editor/LanguageService/LanguageService.fs
+1	examples/FSharp.Compiler/vsintegration/src/FSharp.Editor/Options/UIHelpers.fs
+1	examples/FSharp.Compiler/vsintegration/src/FSharp.LanguageService/BackgroundRequests.fs
+75	examples/FSharp.Compiler/vsintegration/src/FSharp.ProjectSystem.FSharp/Project.fs
+1	examples/FSharp.Compiler/vsintegration/src/FSharp.ProjectSystem.FSharp/ProjectPrelude.fs
+1	examples/FSharp.Compiler/vsintegration/src/FSharp.VS.FSI/sessions.fs
+2	examples/FSharp.Compiler/vsintegration/tests/FSharp.Editor.Tests/FsxCompletionProviderTests.fs
+7	examples/FSharp.Compiler/vsintegration/tests/FSharp.Editor.Tests/HelpContextServiceTests.fs
+2	examples/FSharp.Compiler/vsintegration/tests/FSharp.Editor.Tests/SignatureHelpProviderTests.fs
+83	examples/FSharp.Compiler/vsintegration/tests/MockTypeProviders/DummyProviderForLanguageServiceTesting/ProvidedTypes.fs
+4	examples/FSharp.Compiler/vsintegration/tests/Salsa/VsMocks.fs
+5	examples/FSharp.Compiler/vsintegration/tests/Salsa/salsa.fs
+9	examples/FSharp.Compiler/vsintegration/tests/UnitTests/TestLib.LanguageService.fs
+1	examples/FSharp.Compiler/vsintegration/tests/UnitTests/TestLib.Utils.fs
+1	examples/FSharp.Compiler/vsintegration/tests/UnitTests/Tests.InternalCollections.fs
+66	examples/FSharp.Data/src/FSharp.Data.Csv.Core/CsvFile.fs
+1	examples/FSharp.Data/src/FSharp.Data.DesignTime/CommonProviderImplementation/Helpers.fs
+1	examples/FSharp.Data/src/FSharp.Data.DesignTime/Json/JsonGenerator.fs
+1	examples/FSharp.Data/src/FSharp.Data.DesignTime/Xml/XmlGenerator.fs
+1	examples/FSharp.Data/src/FSharp.Data.Xml.Core/XmlInference.fs
+14	examples/FSharp.Data/tests/FSharp.Data.Core.Tests/JsonValue.fs
