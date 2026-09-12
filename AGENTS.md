@@ -211,6 +211,16 @@ while checking nothing. The list is append-only; regenerate with
 `dotnet fsi scripts/record-fsc-detected.fsx` and never delete an entry to go
 green.
 
+## Releasing a Version
+
+`npx tree-sitter version X.Y.Z` bumps `tree-sitter.json`, `package.json`, `Cargo.toml`,
+`pyproject.toml` and `CMakeLists.txt`, but not the `Makefile`, `package-lock.json`
+(two lines) or `bindings/swift/README.md`; edit those by hand. Then run
+`npm run generate` and commit both `parser.c` files: the generated parser embeds the
+version as `TSLanguageMetadata`, and CI's "Verify generated parser" step fails on a
+bump that leaves them stale. Move the `Unreleased` block of `CHANGELOG.md` under the
+new version heading.
+
 ## Parse Baseline
 
 `test/parse-baseline.txt` records, for every corpus file under `examples/` that

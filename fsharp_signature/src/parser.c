@@ -765315,7 +765315,7 @@ TS_PUBLIC const TSLanguage *tree_sitter_fsharp_signature(void) {
     .metadata = {
       .major_version = 0,
       .minor_version = 3,
-      .patch_version = 11,
+      .patch_version = 12,
     },
   };
   return &language;
