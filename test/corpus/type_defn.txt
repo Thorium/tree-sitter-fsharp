@@ -4342,3 +4342,232 @@ type Handler = delegate of int -> unit
           (simple_type
             (long_identifier
               (identifier))))))))
+
+================================================================================
+measure quotient with a juxtaposed product on the right
+================================================================================
+
+[<Measure>] type B = m^2 / m s / s^2
+let velocity = 1.0<m / s s>
+
+--------------------------------------------------------------------------------
+
+(file
+  (type_definition
+    (attributes
+      (attribute
+        (simple_type
+          (long_identifier
+            (identifier)))))
+    (type_abbrev_defn
+      (type_name
+        type_name: (identifier))
+      block: (measure
+        (measure_quotient
+          (measure_power
+            (measure_atom
+              (simple_type
+                (long_identifier
+                  (identifier))))
+            (int))
+          (postfix_type
+            (simple_type
+              (long_identifier
+                (identifier)))
+            (long_identifier
+              (identifier)))
+          (measure_power
+            (measure_atom
+              (simple_type
+                (long_identifier
+                  (identifier))))
+            (int))))))
+  (declaration_expression
+    (function_or_value_defn
+      (value_declaration_left
+        (identifier_pattern
+          (long_identifier_or_op
+            (identifier))))
+      body: (typed_expression
+        (const
+          (float))
+        (measure
+          (measure_quotient
+            (measure_atom
+              (simple_type
+                (long_identifier
+                  (identifier))))
+            (postfix_type
+              (simple_type
+                (long_identifier
+                  (identifier)))
+              (long_identifier
+                (identifier)))))))))
+
+================================================================================
+extern parameters with a spaced byref and without names
+================================================================================
+
+extern bool CopyFile(char [] lpExistingFileName, bool & bFailIfExists)
+extern bool PointInRect(ExplicitRect&, ExplicitPoint)
+
+--------------------------------------------------------------------------------
+
+(file
+  (extern_binding
+    return_type: (simple_type
+      (long_identifier
+        (identifier)))
+    name: (identifier)
+    parameters: (extern_param
+      type: (list_type
+        (simple_type
+          (long_identifier
+            (identifier))))
+      name: (identifier))
+    parameters: (extern_param
+      type: (simple_type
+        (long_identifier
+          (identifier)))
+      name: (identifier)))
+  (extern_binding
+    return_type: (simple_type
+      (long_identifier
+        (identifier)))
+    name: (identifier)
+    parameters: (extern_param
+      type: (byref_type
+        (simple_type
+          (long_identifier
+            (identifier)))))
+    parameters: (extern_param
+      type: (simple_type
+        (long_identifier
+          (identifier))))))
+
+================================================================================
+operator as a member name
+================================================================================
+
+type C() =
+    member _.(+) a b = a + b
+
+--------------------------------------------------------------------------------
+
+(file
+  (type_definition
+    (anon_type_defn
+      (type_name
+        type_name: (identifier))
+      (primary_constr_args)
+      block: (type_extension_elements
+        (member_defn
+          (method_or_prop_defn
+            name: (property_or_ident
+              instance: (identifier)
+              method: (op_identifier))
+            args: (identifier_pattern
+              (long_identifier_or_op
+                (identifier)))
+            args: (identifier_pattern
+              (long_identifier_or_op
+                (identifier)))
+            (infix_expression
+              (long_identifier_or_op
+                (identifier))
+              (infix_op)
+              (long_identifier_or_op
+                (long_identifier
+                  (identifier))))))))))
+
+================================================================================
+generic property
+================================================================================
+
+type C() =
+    member this.TypeFunc<'a> = typeof<'a>.Name
+
+--------------------------------------------------------------------------------
+
+(file
+  (type_definition
+    (anon_type_defn
+      (type_name
+        type_name: (identifier))
+      (primary_constr_args)
+      block: (type_extension_elements
+        (member_defn
+          (method_or_prop_defn
+            name: (property_or_ident
+              instance: (identifier)
+              method: (identifier))
+            (type_arguments
+              (type_argument_defn
+                (type_argument
+                  (identifier))))
+            (dot_expression
+              base: (typed_expression
+                (long_identifier_or_op
+                  (identifier))
+                (types
+                  (type_argument
+                    (identifier))))
+              field: (long_identifier_or_op
+                (long_identifier
+                  (identifier))))))))))
+
+================================================================================
+delegate type with named parameters
+================================================================================
+
+type D = delegate of arg1:int -> int
+type Foo = delegate of a: A * b: B -> c:C -> D
+
+--------------------------------------------------------------------------------
+
+(file
+  (type_definition
+    (delegate_type_defn
+      (type_name
+        type_name: (identifier))
+      block: (delegate_signature
+        (curried_spec
+          (arguments_spec
+            (argument_spec
+              (argument_name_spec
+                name: (identifier))
+              (simple_type
+                (long_identifier
+                  (identifier)))))
+          (simple_type
+            (long_identifier
+              (identifier)))))))
+  (type_definition
+    (delegate_type_defn
+      (type_name
+        type_name: (identifier))
+      block: (delegate_signature
+        (curried_spec
+          (arguments_spec
+            (argument_spec
+              (argument_name_spec
+                name: (identifier))
+              (simple_type
+                (long_identifier
+                  (identifier))))
+            (argument_spec
+              (argument_name_spec
+                name: (identifier))
+              (simple_type
+                (long_identifier
+                  (identifier)))))
+          (arguments_spec
+            (argument_spec
+              (argument_name_spec
+                name: (identifier))
+              (simple_type
+                (long_identifier
+                  (identifier)))))
+          (simple_type
+            (long_identifier
+              (identifier))))))))

@@ -8,6 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Parsing of several constructs the corpus showed as gaps (39 more of the 4,704
+  FSC-valid example files parse clean, none regress): `let inline v = …`
+  values, `new : string -> 'a` constructor constraints, a juxtaposed measure
+  product on the right of `/` (`m / s s`), `extern` parameters written
+  `bool & flag` or without a name, operators and type arguments on properties
+  (`member _.(+) a b`, `member x.F<'a> = …`), delegates with named
+  parameters, object expressions with no overrides (`{ new A<int>() }`), a
+  `let … in` whose body ends in an if/match/lambda/try, and quotations whose
+  body spans lines (`<@ … @>` now opens a paren-kind layout scope, which
+  also shrinks `parser.c` by 4%).
 - Negative test suite under `test/corpus/invalid/`: snippets that are not valid
   F# and must produce an `ERROR` node, using the corpus `:error` attribute.
 - `test/fsc-detected.txt` and `npm run check:invalid`: 346 corpus files where

@@ -6640,3 +6640,168 @@ let y = 2
               (identifier))))
         body: (const
           (int))))))
+
+================================================================================
+object expression without overrides
+================================================================================
+
+let x = { new A<int>() }
+
+--------------------------------------------------------------------------------
+
+(file
+  (declaration_expression
+    (function_or_value_defn
+      (value_declaration_left
+        (identifier_pattern
+          (long_identifier_or_op
+            (identifier))))
+      body: (brace_expression
+        block: (object_expression
+          (application_expression
+            (typed_expression
+              (long_identifier_or_op
+                (identifier))
+              (types
+                (simple_type
+                  (long_identifier
+                    (identifier)))))
+            (unit)))))))
+
+================================================================================
+let-in whose body ends in an if, a match or a lambda
+================================================================================
+
+let a = let x = if c then 0 else 1 in x
+let b = let x = match c with _ -> 1 in x
+let d = let f = fun () -> 1 in f ()
+
+--------------------------------------------------------------------------------
+
+(file
+  (declaration_expression
+    (function_or_value_defn
+      (value_declaration_left
+        (identifier_pattern
+          (long_identifier_or_op
+            (identifier))))
+      body: (declaration_expression
+        (function_or_value_defn
+          (value_declaration_left
+            (identifier_pattern
+              (long_identifier_or_op
+                (identifier))))
+          body: (if_expression
+            guard: (long_identifier_or_op
+              (identifier))
+            then: (const
+              (int))
+            else: (const
+              (int))))
+        in: (long_identifier_or_op
+          (identifier)))))
+  (declaration_expression
+    (function_or_value_defn
+      (value_declaration_left
+        (identifier_pattern
+          (long_identifier_or_op
+            (identifier))))
+      body: (declaration_expression
+        (function_or_value_defn
+          (value_declaration_left
+            (identifier_pattern
+              (long_identifier_or_op
+                (identifier))))
+          body: (match_expression
+            (long_identifier_or_op
+              (identifier))
+            block: (rules
+              (rule
+                pattern: (wildcard_pattern)
+                block: (const
+                  (int))))))
+        in: (long_identifier_or_op
+          (identifier)))))
+  (declaration_expression
+    (function_or_value_defn
+      (value_declaration_left
+        (identifier_pattern
+          (long_identifier_or_op
+            (identifier))))
+      body: (declaration_expression
+        (function_or_value_defn
+          (value_declaration_left
+            (identifier_pattern
+              (long_identifier_or_op
+                (identifier))))
+          body: (fun_expression
+            (argument_patterns
+              (const
+                (unit)))
+            (const
+              (int))))
+        in: (application_expression
+          (long_identifier_or_op
+            (identifier))
+          (unit))))))
+
+================================================================================
+quotation spanning several lines
+================================================================================
+
+let q1 = <@ let f x y = x + y
+            f 1 2 @>
+let q2 = <@
+    let x = 1
+    x @>
+
+--------------------------------------------------------------------------------
+
+(file
+  (declaration_expression
+    (function_or_value_defn
+      (value_declaration_left
+        (identifier_pattern
+          (long_identifier_or_op
+            (identifier))))
+      body: (literal_expression
+        (declaration_expression
+          (function_or_value_defn
+            (function_declaration_left
+              (identifier)
+              (argument_patterns
+                (long_identifier
+                  (identifier))
+                (long_identifier
+                  (identifier))))
+            body: (infix_expression
+              (long_identifier_or_op
+                (identifier))
+              (infix_op)
+              (long_identifier_or_op
+                (identifier))))
+          in: (application_expression
+            (application_expression
+              (long_identifier_or_op
+                (identifier))
+              (const
+                (int)))
+            (const
+              (int)))))))
+  (declaration_expression
+    (function_or_value_defn
+      (value_declaration_left
+        (identifier_pattern
+          (long_identifier_or_op
+            (identifier))))
+      body: (literal_expression
+        (declaration_expression
+          (function_or_value_defn
+            (value_declaration_left
+              (identifier_pattern
+                (long_identifier_or_op
+                  (identifier))))
+            body: (const
+              (int)))
+          in: (long_identifier_or_op
+            (identifier)))))))
