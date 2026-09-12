@@ -1,4 +1,4 @@
-VERSION := 0.3.11
+VERSION := 0.3.12
 
 LANGUAGE_NAME := tree-sitter-fsharp
 

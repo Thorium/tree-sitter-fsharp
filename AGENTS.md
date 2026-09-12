@@ -211,6 +211,88 @@ while checking nothing. The list is append-only; regenerate with
 `dotnet fsi scripts/record-fsc-detected.fsx` and never delete an entry to go
 green.
 
+## Releasing a Version
+
+`npx tree-sitter version X.Y.Z` bumps `tree-sitter.json`, `package.json`, `Cargo.toml`,
+`pyproject.toml` and `CMakeLists.txt`, but not the `Makefile`, `package-lock.json`
+(two lines) or `bindings/swift/README.md`; edit those by hand. Then run
+`npm run generate` and commit both `parser.c` files: the generated parser embeds the
+version as `TSLanguageMetadata`, and CI's "Verify generated parser" step fails on a
+bump that leaves them stale. Move the `Unreleased` block of `CHANGELOG.md` under the
+new version heading.
+
+## Parse Baseline
+
+`test/parse-baseline.txt` records, for every corpus file under `examples/` that
+parses with errors, how many `ERROR` and `MISSING` nodes it has. `npm run
+check:baseline` (`dotnet fsi scripts/check-parse-baseline.fsx`) fails when any file has
+more than recorded, or a clean file gains some; CI runs it in the `Parse examples`
+job. The parse step itself only notices a file that yields no tree at all, and a
+tree full of error nodes still counts as parsed there.
+
+A change that makes files parse better is reported as such - accept it with
+`--update` and commit the new baseline with the grammar change. A change that makes
+files parse worse must either be fixed or explained in the PR before the baseline
+is loosened. The file is generated; never edit it by hand.
+
+The same run checks `test/parser-size.txt`: the byte size of each generated `parser.c`,
+which tracks the LR state count. A parser more than 15% larger than recorded fails, so a
+rule that quietly doubles the tables is caught even when every test passes. `--update`
+records the current sizes once the growth has been looked at and accepted. Record it from an LF checkout of the
+submodules, as CI has: some corpus files get CRLF endings on Windows and a few of those
+parse with a different number of error nodes (`git -C examples/FSharp.Compiler config
+core.eol lf`, then `git -C examples/FSharp.Compiler checkout-index -a -f`).
+
+Two fsyacc-generated files parse with a compiler-dependent number of error nodes:
+`buildtools/fsyacc/fsyaccast.fs` and `fsyacclex.fs` give 5 and 20 with MSVC and gcc 15,
+but 6 and 27 on the GitHub runners (gcc 13, Apple clang). The baseline records the larger
+numbers, so both pass; the same input parsing differently per compiler points at
+undefined behaviour in the scanner and is worth a look on its own.
+
+The tree-sitter CLI caches compiled parsers by grammar *name* under
+`~/.cache/tree-sitter/lib`; another checkout whose grammar is also called `fsharp`
+(a second worktree, or MangelMaxime's grammar) silently overwrites it. Set
+`TREE_SITTER_LIBDIR` to a per-checkout directory when working with more than one.
+
+## Queries
+
+`queries/` holds the editor-facing queries for the `fsharp` grammar and
+`fsharp_signature/queries/` the ones for `.fsi` files. Capture names and dialects
+follow nvim-treesitter (`@keyword.conditional`, `@variable.member`, `@indent.begin`,
+`@function.inner`, `@fold`); Helix and Zed keep their own copies mapped from these.
+
+| file | consumers | tested by |
+|---|---|---|
+| `highlights.scm` | every editor | `test/highlight/*.fsx` (`.fsi` files test the signature grammar) |
+| `locals.scm` | scope-aware highlighting | `tree-sitter test` compiles it |
+| `injections.scm` | markdown in `(** *)`, xml in `///` | CI compile check |
+| `indents.scm`, `folds.scm`, `textobjects.scm` | Neovim | CI compile check |
+| `tags.scm` | symbol navigation (GitHub, difftastic, ...) | `test/tags/*.fs` |
+
+Three resolution rules decide the order of `highlights.scm`: when several patterns
+capture the same node, the last one in the file wins; a capture on a child node
+overrides one on its parent; and tree-sitter-highlight (the CLI and Helix, not
+Neovim) drops the remaining captures of a match once a later pattern captures the
+same node as that match's first capture. That is why there is no
+`(identifier) @variable` fallback (it would override
+`(argument_patterns) @variable.parameter` and `(_type) @type` from inside), why
+`@spell` is listed before the colour capture it shares a pattern with, why the
+module-path and `@type.builtin` rules sit after the `long_identifier` member rule
+they override, and why every rule that captures identifiers in expressions (member
+paths, calls, pipes, constructors, builtins) is grouped at the end of the file in
+general-to-specific order. `tree-sitter query` shows every capture regardless, so a
+highlight assertion is the only check for the third rule.
+
+Every capture in `highlights.scm` must be pinned by a `test/highlight` assertion:
+`npm run check:highlights` (`scripts/highlight-coverage.sh --check`) fails in CI
+otherwise. `tree-sitter test` checks that the expected name is among the highlights
+at that position, so an assertion also catches a rule that stopped matching.
+
+`tree-sitter query -p fsharp queries/<file>.scm some.fsx` prints every capture with
+its range and text; that is the quickest way to see what a rule does on real code.
+CI compiles every query the same way, which catches a node name that no longer
+exists in queries `tree-sitter test` never loads.
+
 ## References
 
 - **Tree-sitter Documentation**: https://tree-sitter.github.io/tree-sitter/creating-parsers/index.html

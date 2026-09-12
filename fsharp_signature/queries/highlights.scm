@@ -6,13 +6,14 @@
 ;; ----------------------------------------------------------------------------
 ;; Literals and comments
 
+;; `@spell` first: the colour capture, listed last, is the one that wins.
 [
   (line_comment)
   (xml_doc)
   (block_comment)
-] @comment @spell
+] @spell @comment
 
-(xml_doc) @comment.documentation @spell
+(xml_doc) @spell @comment.documentation
 
 (const
   [
@@ -52,7 +53,9 @@
 
 (member_signature
   .
-  (identifier) @function.member
+  (identifier) @function.member)
+
+(member_signature
   (curried_spec
     (arguments_spec
       "*"* @operator
@@ -256,10 +259,6 @@
   "null"
 ] @constant.builtin
 
-((simple_type
-   (long_identifier
-     (identifier) @type.builtin))
- (#any-of? @type.builtin "bool" "byte" "sbyte" "int16" "uint16" "int" "uint" "int64" "uint64" "nativeint" "unativeint" "decimal" "float" "double" "float32" "single" "char" "string" "unit"))
 
 (preproc_if
   [
@@ -277,6 +276,23 @@
   (identifier)+ @variable.member
   .
   (identifier)))
+
+;; Every segment of a module path (`namespace Company.Product`,
+;; `open System.IO`), a type path or an attribute path is part of that name,
+;; not a member access; re-capture the segments the rule above marked as
+;; members (the last capture of a node wins). @type.builtin follows so it
+;; still wins over the plain @type.
+(namespace name: (long_identifier (identifier) @module))
+(named_module name: (long_identifier (identifier) @module))
+(import_decl (long_identifier (identifier) @module))
+(module_abbrev (long_identifier (identifier) @module))
+(simple_type (long_identifier (identifier) @type))
+(attribute (simple_type (long_identifier (identifier) @attribute)))
+
+((simple_type
+   (long_identifier
+     (identifier) @type.builtin))
+ (#any-of? @type.builtin "bool" "byte" "sbyte" "int16" "uint16" "int" "uint" "int64" "uint64" "nativeint" "unativeint" "decimal" "float" "double" "float32" "single" "char" "string" "unit"))
 
 ((identifier) @module.builtin
  (#any-of? @module.builtin "Array" "Async" "Directory" "File" "List" "Option" "Path" "Map" "Set" "Lazy" "Seq" "Task" "String" "Result" ))

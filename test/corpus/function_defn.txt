@@ -509,3 +509,81 @@ module Entry =
         (type_name
           (access_modifier)
           (identifier))))))
+
+================================================================================
+inline value binding
+================================================================================
+
+let inline add3 = add 3
+let inline private empty<'T> = ImmutableArray<'T>.Empty
+
+--------------------------------------------------------------------------------
+
+(file
+  (declaration_expression
+    (function_or_value_defn
+      (value_declaration_left
+        (identifier_pattern
+          (long_identifier_or_op
+            (identifier))))
+      body: (application_expression
+        (long_identifier_or_op
+          (identifier))
+        (const
+          (int)))))
+  (declaration_expression
+    (function_or_value_defn
+      (value_declaration_left
+        (access_modifier)
+        (identifier_pattern
+          (long_identifier_or_op
+            (long_identifier
+              (identifier))))
+        (type_arguments
+          (type_argument_defn
+            (type_argument
+              (identifier)))))
+      body: (dot_expression
+        base: (typed_expression
+          (long_identifier_or_op
+            (identifier))
+          (types
+            (type_argument
+              (identifier))))
+        field: (long_identifier_or_op
+          (long_identifier
+            (identifier)))))))
+
+================================================================================
+constructor constraint with arguments
+================================================================================
+
+let g<'a when 'a : (new : string -> 'a)> () = new 'a()
+
+--------------------------------------------------------------------------------
+
+(file
+  (declaration_expression
+    (function_or_value_defn
+      (function_declaration_left
+        (identifier)
+        (type_arguments
+          (type_argument_defn
+            (type_argument
+              (identifier)))
+          (type_argument_constraints
+            (constraint
+              (type_argument
+                (identifier))
+              (simple_type
+                (long_identifier
+                  (identifier)))
+              (type_argument
+                (identifier)))))
+        (argument_patterns
+          (const
+            (unit))))
+      body: (generic_new_expression
+        (type_argument
+          (identifier))
+        (unit)))))
