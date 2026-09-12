@@ -11,6 +11,7 @@
         "fsx"
       ],
       "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm",
       "injections": "queries/injections.scm",
       "tags": "queries/tags.scm",
       "injection-regex": "^fsharp$"
@@ -24,6 +25,7 @@
         "fsi"
       ],
       "highlights": "fsharp_signature/queries/highlights.scm",
+      "locals": "fsharp_signature/queries/locals.scm",
       "injections": "queries/injections.scm",
       "tags": "fsharp_signature/queries/tags.scm",
       "injection-regex": "^fsharp_signature$"

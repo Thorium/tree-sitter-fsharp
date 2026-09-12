@@ -239,14 +239,49 @@ but 6 and 27 on the GitHub runners (gcc 13, Apple clang). The baseline records t
 numbers, so both pass; the same input parsing differently per compiler points at
 undefined behaviour in the scanner and is worth a look on its own.
 
-`scripts/highlight-coverage.sh` lists the captures in `queries/highlights.scm` that
-no `test/highlight` assertion pins (`--check` exits 1 if there are any). When you
-add a capture, add an assertion for it.
-
 The tree-sitter CLI caches compiled parsers by grammar *name* under
 `~/.cache/tree-sitter/lib`; another checkout whose grammar is also called `fsharp`
 (a second worktree, or MangelMaxime's grammar) silently overwrites it. Set
 `TREE_SITTER_LIBDIR` to a per-checkout directory when working with more than one.
+
+## Queries
+
+`queries/` holds the editor-facing queries for the `fsharp` grammar and
+`fsharp_signature/queries/` the ones for `.fsi` files. Capture names and dialects
+follow nvim-treesitter (`@keyword.conditional`, `@variable.member`, `@indent.begin`,
+`@function.inner`, `@fold`); Helix and Zed keep their own copies mapped from these.
+
+| file | consumers | tested by |
+|---|---|---|
+| `highlights.scm` | every editor | `test/highlight/*.fsx` (`.fsi` files test the signature grammar) |
+| `locals.scm` | scope-aware highlighting | `tree-sitter test` compiles it |
+| `injections.scm` | markdown in `(** *)`, xml in `///` | CI compile check |
+| `indents.scm`, `folds.scm`, `textobjects.scm` | Neovim | CI compile check |
+| `tags.scm` | symbol navigation (GitHub, difftastic, ...) | `test/tags/*.fs` |
+
+Three resolution rules decide the order of `highlights.scm`: when several patterns
+capture the same node, the last one in the file wins; a capture on a child node
+overrides one on its parent; and tree-sitter-highlight (the CLI and Helix, not
+Neovim) drops the remaining captures of a match once a later pattern captures the
+same node as that match's first capture. That is why there is no
+`(identifier) @variable` fallback (it would override
+`(argument_patterns) @variable.parameter` and `(_type) @type` from inside), why
+`@spell` is listed before the colour capture it shares a pattern with, why the
+module-path and `@type.builtin` rules sit after the `long_identifier` member rule
+they override, and why every rule that captures identifiers in expressions (member
+paths, calls, pipes, constructors, builtins) is grouped at the end of the file in
+general-to-specific order. `tree-sitter query` shows every capture regardless, so a
+highlight assertion is the only check for the third rule.
+
+Every capture in `highlights.scm` must be pinned by a `test/highlight` assertion:
+`npm run check:highlights` (`scripts/highlight-coverage.sh --check`) fails in CI
+otherwise. `tree-sitter test` checks that the expected name is among the highlights
+at that position, so an assertion also catches a rule that stopped matching.
+
+`tree-sitter query -p fsharp queries/<file>.scm some.fsx` prints every capture with
+its range and text; that is the quickest way to see what a rule does on real code.
+CI compiles every query the same way, which catches a node name that no longer
+exists in queries `tree-sitter test` never loads.
 
 ## References
 

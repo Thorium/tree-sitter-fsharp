@@ -28,7 +28,9 @@ jobs:
         # files. Install that version instead; dependabot bumps it with the lock.
         id: cli
         shell: bash
-        run: echo "ref=v$(node -p "require('./package-lock.json').packages['node_modules/tree-sitter-cli'].version")" >> "$GITHUB_OUTPUT"
+        run: |
+          version=$(node -p "require('./package-lock.json').packages['node_modules/tree-sitter-cli'].version")
+          echo "ref=v$version" >> "$GITHUB_OUTPUT"
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
         with:
@@ -54,7 +56,9 @@ jobs:
       - name: Pin the tree-sitter CLI to the locked version
         id: cli
         shell: bash
-        run: echo "ref=v$(node -p "require('./package-lock.json').packages['node_modules/tree-sitter-cli'].version")" >> "$GITHUB_OUTPUT"
+        run: |
+          version=$(node -p "require('./package-lock.json').packages['node_modules/tree-sitter-cli'].version")
+          echo "ref=v$version" >> "$GITHUB_OUTPUT"
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action@v2
         with:
@@ -129,6 +133,12 @@ jobs:
             tree-sitter query -p fsharp_signature "$q" examples/FSharp.Compiler/src/FSharp.Core/seq.fsi > /dev/null || { echo "::error::$q does not compile against the fsharp_signature parser"; status=1; }
           done
           exit $status
+      - name: Check every highlight capture has a test
+        # A capture no test/highlight assertion mentions can be mis-targeted or
+        # deleted without the suite noticing.
+        if: "!cancelled()"
+        shell: bash
+        run: bash scripts/highlight-coverage.sh --check
   fuzz:
     name: Fuzz scanner
     runs-on: ubuntu-latest

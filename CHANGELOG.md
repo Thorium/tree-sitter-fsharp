@@ -8,6 +8,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `queries/folds.scm` (nvim-treesitter `@fold`) and `queries/textobjects.scm`
+  (nvim-treesitter-textobjects: function, class, parameter, call, block,
+  conditional, loop, return, assignment, attribute, comment and number objects).
+- `fsharp_signature/queries/locals.scm`, and `test/highlight/signature.fsi`, the
+  first highlight test for the signature grammar.
+- Highlights for constructs the queries left uncoloured: qualified call heads
+  (`List.map f`, `x.M y`) and the function side of `|>`, `<|`, `>>` and `<<`;
+  capitalised heads as `@constructor` (`Some x`, `Circle 1.0`, `ResizeArray<int>()`,
+  and union/enum cases in their definitions); type parameters (`'T`, `^a`);
+  units of measure; `typeof`/`sizeof`/`nameof` as `@function.builtin`; `base`,
+  `this` and `self` in expressions as `@variable.builtin`; auto-properties
+  (`member val`), abstract members without argument names, named union-case
+  fields, SRTP member names; the last segment of a value-rooted path as
+  `@property` (`ex.Message`); and the `@>`/`@@>` quotation closers, which the
+  grammar now exposes as anonymous nodes.
+- The `[<Literal>]` constant rule now matches at module level too (a `let`
+  followed by further declarations is a `declaration_expression`, not the
+  `value_declaration` it required), and `[<AutoOpen>] module Inner =` keeps its
+  `@module` (the rule anchored on the first child, which was the attribute).
+- `locals.scm` scopes `for`, `match`, each rule and members, and defines
+  parameters at any pattern depth, member tuple parameters, the self identifier
+  and loop variables (structure ported from nvim-treesitter's copy; capture names
+  stay the plain `@local.*` set that `tree-sitter tags` accepts).
+- Every capture in `highlights.scm` now has a highlight assertion (43 of 43, from
+  16 of 41), and CI fails when one is added without (`npm run check:highlights`).
 - `test/parse-baseline.txt` and `npm run check:baseline`: the number of ERROR/MISSING
   nodes in every corpus file that has any, asserted in CI so a file cannot parse
   worse than recorded. `Parse examples` counts a file as parsed as long as a
@@ -18,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI compiles every `.scm` under `queries/` and `fsharp_signature/queries/` against
   its parser; `tree-sitter test` only exercised highlights and locals.
 - `scripts/highlight-coverage.sh`: which `highlights.scm` captures no highlight
-  test asserts (25 of 41 today).
+  test asserts.
 - Parsing of several constructs the corpus showed as gaps (39 more of the 4,704
   FSC-valid example files parse clean, none regress): `let inline v = …`
   values, `new : string -> 'a` constructor constraints, a juxtaposed measure

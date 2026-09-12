@@ -432,13 +432,18 @@ module.exports = grammar({
             optional($.type_arguments),
           ),
           // `let inline add3 = add 3` — an inline value has no parameters, so it
-          // is not a function_declaration_left. Only a plain name may follow the
-          // keyword, so `let inline f x` stays a function.
+          // is not a function_declaration_left. Only a name (no pattern, no
+          // arguments) may follow the keyword, so `let inline f x` stays a
+          // function and `let inline (a, b) = …` is not accepted.
           seq("inline", optional($.access_modifier), alias($._inline_value_name, $.identifier_pattern), optional($.type_arguments)),
         ),
       ),
 
-    // The name of an inline value: a bare identifier_pattern with no arguments.
+    // The name of an inline value. The same shape identifier_pattern wraps
+    // (an identifier, an operator name or a dotted path): the alias keeps the
+    // tree identical to a plain `let x = …`, so queries need no special case.
+    // A dotted name is not valid F# here, but identifier_pattern accepts it
+    // everywhere else too and the type checker reports it.
     _inline_value_name: ($) => $.long_identifier_or_op,
 
     access_modifier: (_) =>
@@ -668,8 +673,10 @@ module.exports = grammar({
         choice(
           // A paren-kind scope, like `( … )`: the body may span lines that are
           // not aligned with any open layout level, and `@>` closes it.
-          seq("<@", $._paren_expression_block, $._quoted_close),
-          seq("<@@", $._paren_expression_block, $._untyped_quoted_close),
+          // The closers are scanner tokens; aliasing them to their spelling
+          // makes them addressable from queries ("@>" @punctuation.special).
+          seq("<@", $._paren_expression_block, alias($._quoted_close, "@>")),
+          seq("<@@", $._paren_expression_block, alias($._untyped_quoted_close, "@@>")),
         ),
       ),
 

@@ -2075,8 +2075,13 @@
                 "name": "_paren_expression_block"
               },
               {
-                "type": "SYMBOL",
-                "name": "_quoted_close"
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_quoted_close"
+                },
+                "named": false,
+                "value": "@>"
               }
             ]
           },
@@ -2092,8 +2097,13 @@
                 "name": "_paren_expression_block"
               },
               {
-                "type": "SYMBOL",
-                "name": "_untyped_quoted_close"
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_untyped_quoted_close"
+                },
+                "named": false,
+                "value": "@@>"
               }
             ]
           }

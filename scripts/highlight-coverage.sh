@@ -11,7 +11,10 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-captures=$(grep -oE '@[a-z_]+(\.[a-z_]+)*' queries/highlights.scm | sort -u)
+# Comments are stripped first (a `;` inside a string, `";"`, only loses text that
+# holds no capture). `@spell`/`@nospell` only mark text for spell checking and
+# `@_name` captures exist for predicates; nothing renders either.
+captures=$(sed 's/;.*//' queries/highlights.scm | grep -oE '@[a-z_]+(\.[a-z_]+)*' | grep -vE '^@(no)?spell$|^@_' | sort -u)
 asserted=$(grep -hoE '\^+ *[a-z_]+(\.[a-z_]+)*' test/highlight/*.fsx \
            | sed -E 's/^\^+ *//; s/^/@/' | sort -u)
 # `// <- capture` anchors the first column; the same capture name applies.
